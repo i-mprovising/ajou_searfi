@@ -4,7 +4,10 @@ import Ajou_backend.project.Error.CustomException;
 import Ajou_backend.project.JWT.AuthRequest;
 import Ajou_backend.project.JWT.JwtProvider;
 import Ajou_backend.project.JWT.TokenResponse;
+import Ajou_backend.project.Table.DTO.HashtagDto;
+import Ajou_backend.project.Table.DTO.LinkDto;
 import Ajou_backend.project.Table.DTO.UserDto;
+import Ajou_backend.project.Table.Entity.Hashtag;
 import Ajou_backend.project.User.Service.UserService;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 import static Ajou_backend.project.Error.ErrorCode.ERR_AUTHORIZED;
 
@@ -29,8 +34,10 @@ public class LoginController {
     private final JwtProvider jwtProvider;
 
     @PostMapping("/join")
-    public ResponseEntity<?> userJoin(@RequestBody UserDto userDto) {
-        userService.join(userDto);
+    public ResponseEntity<?> userJoin(@RequestPart(name="user") UserDto userDto, @RequestPart(name="hashtag") List<HashtagDto> hashtagDtoList) {
+        log.info("user = " + userDto);
+        log.info("hashtag =" +hashtagDtoList);
+        userService.join(userDto, hashtagDtoList);
         return ResponseEntity.status(HttpStatus.CREATED).body("Join success");
     }
 

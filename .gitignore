@@ -151,3 +151,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Custom
+/model/test/
+/model/.env

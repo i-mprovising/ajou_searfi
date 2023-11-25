@@ -40,7 +40,7 @@ def get_data(soup, page):
       data['page'] = "SOFT"
       data['id'] = res[0].text.strip()
       link = res[2].select_one('a')['href']
-      data['url'] = link
+      data['url'] = page+link
       data['title'] = res[2].select_one('a').text.strip()
       data['view'] = res[8].text.strip()
       

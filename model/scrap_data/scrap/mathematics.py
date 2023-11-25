@@ -42,7 +42,7 @@ def get_data(soup, page):
       data['page'] = 'MATH'
       data['id'] = res[0].text
       link = res[1].select_one('a')['href'] # 페이지 링크
-      data['url'] = link
+      data['url'] = page+link
       data['title'] = res[1].select_one('a').text.strip()
       data['category'] = res[4].text
       data['due'] = res[5].select_one('img').text

@@ -1,9 +1,9 @@
 import os
+import argparse
 from datetime import datetime, timedelta
-
+from collections import defaultdict
 from dotenv import load_dotenv
 from es_handler import ElasticsearchHandler
-from collections import defaultdict
 from utils import get_embedding
 
 def search_result(keyword:str):
@@ -31,7 +31,8 @@ def notice_list(keywords:list):
                 }
             }
         }
-        result = ES.search(os.getenv("ES_INDEX"), range_query)
+        # result = ES.search(os.getenv("ES_INDEX"), range_query)
+        result = ES.search("test_index", range_query)
         return ES.process_data(result)
     else:
         search_body = {
@@ -52,3 +53,21 @@ def get_repeated():
         per_month[month].append(data)
     
     return per_month
+
+if __name__=="__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--func', '-f', type=str, help="function to use")
+    parser.add_argument('--input', '-i', type=str, help="input of the function")
+    args = parser.parse_args()
+
+    if args.func == "notice_list":
+        if args.input == "[]":
+            print(notice_list([]))
+        else:
+            input = args.input[1:-1].split(',')
+            print(notice_list(input))
+    elif args.func == "get_repeated":
+        print(get_repeated(args.input))
+    elif args.func == "search_result":
+        print(search_result(args.input))
+        pass

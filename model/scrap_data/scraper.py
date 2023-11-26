@@ -56,7 +56,7 @@ def main():
     load_dotenv('.env', verbose=True)
 
     ES = ElasticsearchHandler(os.getenv('ES_URI'))
-    if ES.indices.exists(index=os.getenv('ES_INDEX')):
+    if not ES.indices.exists(index=os.getenv('ES_INDEX')):
         ES.create_index(ES, index=os.getenv('ES_INDEX'))
 
     data_list = get_data()
@@ -69,17 +69,10 @@ def main():
         matches = ['재공지', 'Remind', 'remind', 'REMIND']
         if any(x in title for x in matches):
             pass
-        data['title_vector'] = get_embedding(preprocess(title))
-        insert_list.append({
-            "_index": index,
-            "_source" : data
-        })
-        source_list.append(data)
-        # ES.insert(INDEX_NAME=os.getenv('ES_INDEX'),
-        #           data=data)
-    repeated_notices(ES, data_list)
-    ES.insert_bulk(insert_list)
-
+        title = preprocess(title)
+        data['title_vector'] = get_embedding(title)
+        ES.insert(INDEX_NAME=os.getenv('ES_INDEX'),
+                  data=data)
 
 if __name__=='__main__':
     # print(get_data('mathematics'))

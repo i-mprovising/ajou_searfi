@@ -1,0 +1,177 @@
+
+.noticeFrame {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  width: calc(100% - 1.5vh * 2);
+  height: 100%;
+  padding: 0 1.5vh;
+  font-size: 1.4vh;
+  color: black;
+
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.noticePartition {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+  width: calc(50% - 4vh);
+  height: calc(100% - 4vh);
+  margin-bottom: 4vh;
+}
+
+.noticeBoard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: solid 0.2vh #a0a0a0;
+  border-radius: 1.5vh;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.noticeSearchBox {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: calc(98% - 1vh * 2); /* padding left + right 제외 */
+  height: calc(50% - 1vh * 2); /* padding top + bottom 제외 */
+  padding: 1vh;
+  border: solid 0.2vh #7a7070 !important;
+  border-radius: 3.2vh;
+  overflow: hidden;
+}
+
+.noticeSearchInput {
+  background: transparent !important;
+  width: 95% !important;
+  height: calc(100% - 1vh* 2) !important;
+  outline-width: 0 !important;
+  border-width: 0 !important;
+  padding-left: 0.5vh !important;
+  font-size: 2vh !important;
+}
+
+.noticeHashtag {
+  padding-top: 1vh;
+}
+
+.noticeOrder {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: calc(100% - 4vh); /* padding-right 제외 */
+  height: 5vh;
+  padding-right: 4vh;
+  font-size: 1.4vh;
+  overflow: hidden;
+}
+
+.noticeItemFrame {
+  width: calc(100%  - 2vh * 2); /* padding left + right 제외 */
+  height: calc(100% - 5vh - 1vh - 2vh); /* noticeOrder height와 padding top + bottom 제외 */
+  padding: 1vh 2vh 2vh 2vh;
+  overflow: auto;
+}
+
+.noticeItem {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  max-width: calc(100% - 1vh * 2); /* padding left + right 제외 */
+  height: 8vh;
+  padding: 1vh;
+  margin-bottom: 2vh;
+  border: solid 0.2vh #a0a0a0;
+  border-radius: 1.5vh;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+
+/* item selected color: e0ebf3 */
+
+.noticeItem:hover {
+  background-color: #60ace4;
+  transform: scale(1.03);
+}
+
+.noticeItem:hover > .noticeDate {
+  color: #f0f0f0;
+}
+
+.noticeItem:hover > .noticeSubject {
+  color: white;
+}
+
+.noticeDate {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: calc(100% - 1vh);
+  padding-right: 1vh;
+  font-size: 1.6vh;
+  color: #505050;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.noticeSubject {
+  font-size: 2vh;
+  font-weight: 600;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.button {
+  height: 4.5vh;
+  margin: 4vh;
+  padding: 0 3.3vh;
+  font-size: 2vh;
+  color: white;
+  background-color: #066aba;
+/*  outline-color: var(--outline-color); */
+  outline-color: #00d4f4;
+  border-width: 0;
+  border-radius: 3vh;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.button:disabled {
+  color: #c4c4c4;
+  background-color: #eaeaea;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.textLink {
+  color: #606060;
+  font-size: 1.4vh;
+}
+
+.textLink:hover {
+  font-size: 1.5vh;
+}

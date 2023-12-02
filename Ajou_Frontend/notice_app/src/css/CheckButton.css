@@ -1,0 +1,33 @@
+.buttonCheck {
+  height: 2.3vh;
+  margin: 0.4vh;
+  padding: 0 1.2vh;
+  font-size: 1.4vh;
+/*  font-weight: 600; */
+  color: black;
+  background-color: #efefef;
+  border-width: 0px;
+  border-radius: 1vh;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  outline-color: var(--outline-color);
+}
+
+.buttonChecked {
+  height: 2.3vh;
+  margin: 0.4vh;
+  padding: 0 1.2vh;
+  font-size: 1.4vh;
+/*  font-weight: 600; */
+  color: black;
+  background-color: #c8e6ff;
+  border-width: 0px;
+  border-radius: 1vh;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  outline-color: var(--outline-color);
+}
+
+.buttonCheck:hover, .buttonChecked:hover {
+  transform: scale(1.1);
+}

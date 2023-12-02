@@ -1,0 +1,138 @@
+:root {
+  --box-shadow: 0.1vw 0.3vh 0.5vw 0.3vh #c0c0c0;
+  --box-shadow-light: 0.1vw 0.3vh 0.5vw 0.2vh #ececec;
+  --text-shadow: 0.12vw 0.2vh 0.5vh #a0a0a0;
+  --outline-color: #066aba;
+  --button-color: #066aba;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.barNav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: calc(50px - 5px); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
+  margin: 0;
+  color: black;
+  background: white;
+  border-bottom: solid 5px #066aba;
+  box-shadow: var(--box-shadow);
+}
+
+.barNavLogo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.barNavTitle {
+  font-weight: 400;
+  text-shadow: 1px 1px 3px #a0a0a0;
+  margin: 10px;
+}
+
+.barImgProfile {
+  margin-left: auto;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.appContainer {
+  height: calc(100vh - 50px - 3vh); /* barNav height 50px + padding-top 제외 */
+  min-height: 300px;
+  min-width: 200px;
+  padding-top: 3vh;
+  display: flex;
+  align-items: center; /* flex-direction 반대 방향(교차축) 정렬, row인 경우 상하 방향 */
+  flex-direction: row; /* default: row, row인 경우 element들이 가로로 나열됨 */
+  justify-content: center; /* flex-direction 정렬, row인 경우 좌우 방향 */
+  color: #858585;
+  overflow: auto;
+}
+
+.contentBoard {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+  border: solid 0.2vh #a0a0a0;
+  border-radius: 1.5vh;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;  /* 수직 정렬 */
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+/*  text-shadow: var(--text-shadow); */
+}
+
+.pageTitle {
+  font-size: 2.8vh;
+  font-weight: 600;
+  padding: 0;
+/*  text-shadow: var(--text-shadow); */
+}
+
+.hashtag {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.label {
+  font-size: 1.4vh;
+  font-weight: 600;
+}
+
+.button {
+  height: 4.5vh;
+  margin: 4vh;
+  padding: 0 3.3vh;
+  font-size: 2vh;
+  color: white;
+  background-color: #066aba;
+/*  outline-color: var(--outline-color); */
+  outline-color: #00d4f4;
+  border-width: 0;
+  border-radius: 3vh;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.button:disabled {
+  color: #c4c4c4;
+  background-color: #eaeaea;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.textLink {
+  color: #606060;
+  font-size: 1.4vh;
+}
+
+.textLink:hover {
+  font-size: 1.5vh;
+}

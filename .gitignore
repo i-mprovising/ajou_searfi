@@ -157,3 +157,5 @@ cython_debug/
 # Custom
 /model/test/
 /model/.env
+
+/Ajou_Backend/src/main/resources/application.properties

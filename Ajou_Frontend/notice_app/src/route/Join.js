@@ -4,28 +4,30 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import GVar from "../const/GlobalVar";
-import Swal from "../component/Swal";
+import gVar from "../const/GlobalVar";
+import swal from "../component/Swal";
+import userAPI from "../API/UserAPI";
 import InputText from "../component/InputText";
 import CheckButton from "../component/CheckButton";
-import joinAPI from "../API/JoinAPI";
 
 export default function Join() {
   let [HashtagList, setHashtagList] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-console.log("useEffect");
-    joinAPI.getHashtagInfo()
+//console.log("useEffect");
+    userAPI.getHashtagInfo()
       .then((data) => {
-console.log(data);
-        for (let key in data) data[key] = 0; // clear check value
-        setHashtagList(data);
+//console.log(data);
+        var hashtag = {};
+        for (let item of data.keyword) hashtag[item] = 0; // clear check value
+        setHashtagList(hashtag);
+
       });
   }, []); // 비어있는 배열 인자 []가 있으면 useEffect를 1회만 실행함, 인자가 없거나 [v#1,...,v#N]과 같이 배열의 요소가 있으면 렌더링마다 실행함
 
   const formSchema = yup.object({
-    in_email: yup
+    email: yup
       .string()
       .required(true)
       .max(40, "최대 40자 까지만 가능합니다")
@@ -33,28 +35,29 @@ console.log(data);
         /^[\w.+-]+@[\w-]+(\.[\w-]+)+$/,
         "이메일 주소 형식으로 입력하세요"
       ),
-    in_grade: yup
+    grade: yup
       .string()
       .required(true)
       .matches(
         /^\d{1}$/,
         "숫자 한 자를 입력하세요"
       ),
-    in_major: yup
+    major: yup
       .string()
       .required(true),
-    in_passwd: yup
+    password: yup
       .string()
       .required(true)
       .min(8, "영문 숫자포함 8자리 이상을 입력하세요")
       .max(16, "최대 16자 까지만 가능합니다")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,15}$/,
+        /^((?=.*[a-zA-Z])(?=.*[\d])|(?=.*[a-zA-Z])(?=.*[\d])(?=.*[\W])).{8,15}$/, // 영문+숫자, 영문+숫자+특수문자
+//	/^(?=.*[a-zA-Z])(?=.*[\d\W]).{8,15}$/, // 영문+숫자, 영문+특수문자, 영문+숫자+특수문자
         "영문 숫자포함 8자리 이상을 입력하세요"
       ),
-    in_passwdConfirm: yup
+    passwordConfirm: yup
       .string()
-      .oneOf([yup.ref("in_passwd")], "비밀번호가 일치하지 않습니다."),
+      .oneOf([yup.ref("password")], "비밀번호가 일치하지 않습니다."),
   });
 
   const {
@@ -68,48 +71,55 @@ console.log(data);
     resolver: yupResolver(formSchema),
   });
 
-  Swal.setControl(control, true);
+  swal.setControl(control, true);
 
   async function onSubmit(submitData) {
-    if (getValues('in_passwd') !== getValues('in_passwdConfirm')) {
-      return Swal.alert("비밀번호가 일치하지 않습니다.", "in_passwdConfirm");
+    if (getValues('password') !== getValues('passwordConfirm')) {
+      return swal.alert("비밀번호가 일치하지 않습니다.", "passwordConfirm");
     }
 
-    const { in_passwdConfirm, ...jsonData } = submitData;
-    console.log(jsonData);
+    const { passwordConfirm, ...data } = submitData;
 
-    joinAPI.joinUser(jsonData)
+    var hashtag = [];
+    for (let item in HashtagList) { // HashtagList는 객체
+      if (HashtagList[item]) hashtag.push(item);
+    }
+    data.keyword = hashtag;
+    const userData = { user: data };
+
+//console.log(userData);
+
+    userAPI.joinUser(userData)
       .then((data) => {
-console.log(data);
-         Swal.alertOk("회원가입이 성공적으로 완료되었습니다.",
+//console.log(data);
+         swal.alertOk("회원가입이 성공적으로 완료되었습니다.",
            ()=>{ navigate("/login") }
          );
       })
       .catch((response) => {
         if (response.status === 409) {
-          Swal.alertOk("입력한 아이디는 사용할 수 없습니다.", "in_email");
+          swal.alertOk("입력한 아이디는 사용할 수 없습니다.", "email");
         }
       });
-console.log("leave onSubmit()");
 };
 
   function onClickSubmitButton(e) {
     if (isValid) return;
     e.preventDefault(); // 버튼 클릭 취소
-    Swal.alert("회원가입 정보 입력을 완료하고 버튼을 클릭하세요.");
+    swal.alert("회원가입 정보 입력을 완료하고 버튼을 클릭하세요.");
   }
 
   function IdCheck() {
-    var id = getValues('in_email');
+    var id = getValues('email');
     if (!id) {
-      return Swal.alertErr("이메일을 입력하세요.", "in_email");
+      return swal.alertErr("이메일을 입력하세요.", "email");
     }
-    joinAPI.IdCheck(getValues('in_email'))
+    userAPI.IdCheck(getValues('email'))
     .then((data) => {
-      Swal.alertOk("이 이메일은 사용 가능 합니다.", "in_grade");
+      swal.alertOk("이 이메일은 사용 가능 합니다.", "grade");
     })
     .catch((error) => {
-      Swal.alertErr("이 이메일은 사용할 수 없습니다.", "in_email");
+      swal.alertErr("이 이메일은 사용할 수 없습니다.", "email");
     });
   }
 
@@ -141,43 +151,43 @@ console.log("leave onSubmit()");
     <form onSubmit={handleSubmit(onSubmit)}>
     <div className="contentBoard" style={{ width: "calc(90vh * 0.6)", height: "80vh" }}>
       <div className="contentContainer">
-        <h2 className="pageTitle">{GVar.TITLE}</h2>
+        <h2 className="pageTitle">{gVar.TITLE}</h2>
         <div style={{ width:"84%" }}>
-          <InputText name="in_email" autoFocus
-            maxLength="40" trim={true}
+          <InputText name="email" trim autoFocus
+            maxLength="40"
             label="E-mail"
             placeholder="이메일을 입력해주세요."
             link={{ text: "중복 확인", onClick: IdCheck }}
             error={errors}
-            {...register("in_email")}
+            {...register("email")}
           />
-      	  <InputText name="in_grade"
-            maxLength="1" trim={true} pattern={/\d{1}/}
+      	  <InputText name="grade" trim
+            maxLength="1" pattern={/\d{1}/}
             label="grade"
             placeholder="학년을 입력해주세요."
             error={errors}
-            {...register("in_grade")}
+            {...register("grade")}
           />
-      	  <InputText name="in_major"
-            maxLength="10" trim={true}
+      	  <InputText name="major" trim
+            maxLength="10"
             label="major"
             placeholder="전공을 입력해주세요."
             error={errors}
-            {...register("in_major")}
+            {...register("major")}
           />
-      	  <InputText type="password" name="in_passwd"
+      	  <InputText type="password" name="password"
             maxLength="16"
             label="Password"
             placeholder="비밀번호를 입력해주세요."
             error={errors}
-            {...register("in_passwd")}
+            {...register("password")}
           />
-      	  <InputText type="password" name="in_passwdConfirm"
+      	  <InputText type="password" name="passwordConfirm"
             maxLength="16"
             label="Password"
             placeholder="비밀번호를 한번 더 입력해주세요."
             error={errors}
-            {...register("in_passwdConfirm")}
+            {...register("passwordConfirm")}
           />
           <div className="label" style={{width: "100%", padding: "3.5vh 0 1vh 0", textAlign: "left" }}>
             관심있는 키워드를 클릭해주세요!

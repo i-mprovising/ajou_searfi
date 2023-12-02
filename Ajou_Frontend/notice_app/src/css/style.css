@@ -13,10 +13,11 @@
 
 .barNav {
   display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
   width: 100%;
-  height: calc(
-    50px - 5px
-  ); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
+  height: calc(50px - 5px); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
   margin: 0;
   color: black;
   background: white;
@@ -24,11 +25,25 @@
   box-shadow: var(--box-shadow);
 }
 
+.barNavLogo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 .barNavTitle {
   font-weight: 400;
   text-shadow: 1px 1px 3px #a0a0a0;
   margin: 10px;
-  padding-left: 20px;
+}
+
+.barImgProfile {
+  margin-left: auto;
+  padding-right: 20px;
+  cursor: pointer;
 }
 
 .appContainer {
@@ -59,19 +74,19 @@
 .contentContainer {
   display: flex;
   align-items: center;
-  flex-direction: column; /* 수직 정렬 */
+  flex-direction: column;  /* 수직 정렬 */
   justify-content: center;
   width: 100%;
   height: 100%;
   text-align: center;
-  /*  text-shadow: var(--text-shadow); */
+/*  text-shadow: var(--text-shadow); */
 }
 
 .pageTitle {
   font-size: 2.8vh;
   font-weight: 600;
   padding: 0;
-  /*  text-shadow: var(--text-shadow); */
+/*  text-shadow: var(--text-shadow); */
 }
 
 .hashtag {
@@ -79,7 +94,7 @@
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: flex-start;
 }
 
 .label {
@@ -94,7 +109,7 @@
   font-size: 2vh;
   color: white;
   background-color: #066aba;
-  /*  outline-color: var(--outline-color); */
+/*  outline-color: var(--outline-color); */
   outline-color: #00d4f4;
   border-width: 0;
   border-radius: 3vh;
@@ -120,41 +135,4 @@
 
 .textLink:hover {
   font-size: 1.5vh;
-}
-
-.leftBoard {
-  width: 48%;
-  height: 96%;
-  float: left;
-  border: 1px solid #000;
-  border-radius: 2vh;
-}
-
-.search {
-  width: 75%;
-  height: 8%;
-  margin: auto;
-  border-radius: 2vh;
-}
-.noticeList {
-  width: 90%;
-  height: 77%;
-  margin: auto;
-  border: 1px solid #000;
-  border-radius: 2vh;
-}
-
-.rightBoard {
-  width: 48%;
-  height: 96%;
-  float: right;
-  border: 1px solid #000;
-  border-radius: 2vh;
-}
-
-.rightIframe {
-  width: 99.5%;
-  height: 99.4%;
-  float: none;
-  border-radius: 2vh;
 }

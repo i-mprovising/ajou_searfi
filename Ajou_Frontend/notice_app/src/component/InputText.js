@@ -128,7 +128,9 @@ const InputText = forwardRef((props, ref) => {
 
     return (
       <div className="inputContainer">
-        <label className="label" htmlFor={props.name}>{props.label}</label><br/>
+        { props.label !== undefined &&
+          <label className="label" htmlFor={props.name}>{props.label}<br/></label>
+	}
         <div className="inputBox">
           { props.link && !isError &&
             <div className="inputBoxOverlap inputBoxLink">

@@ -5,6 +5,7 @@ import Ajou_backend.project.Table.DTO.UserDto;
 import Ajou_backend.project.User.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +31,9 @@ public class MypageController {
         return ResponseEntity.status(HttpStatus.OK).body(map);
     }
     @PatchMapping("/update")
-    public ResponseEntity update(@RequestHeader HttpHeaders header, @RequestPart(name="user") UserDto userDto, @RequestPart(name="hashtag") List<HashtagDto> hashtagDtoList) throws Exception {
+    public ResponseEntity update(@RequestHeader HttpHeaders header, @RequestBody JSONObject object) throws Exception {
         Long userId = userService.loginCheck(header);
-        userService.update(userId, userDto, hashtagDtoList);
+        userService.update(object);
         return ResponseEntity.status(HttpStatus.OK).body("Update Success");
     }
 }

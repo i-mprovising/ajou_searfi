@@ -12,6 +12,7 @@ import Ajou_backend.project.User.Service.UserService;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +35,10 @@ public class LoginController {
     private final JwtProvider jwtProvider;
 
     @PostMapping("/join")
-    public ResponseEntity<?> userJoin(@RequestPart(name="user") UserDto userDto, @RequestPart(name="hashtag") List<HashtagDto> hashtagDtoList) {
-        log.info("user = " + userDto);
-        log.info("hashtag =" +hashtagDtoList);
-        userService.join(userDto, hashtagDtoList);
+    public ResponseEntity<?> userJoin(@RequestBody JSONObject object) {
+        log.info("user = " + object.get("user"));
+        log.info("user = " + object.get("keyword"));
+        userService.join(object);
         return ResponseEntity.status(HttpStatus.CREATED).body("Join success");
     }
 

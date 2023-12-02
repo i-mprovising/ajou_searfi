@@ -7,11 +7,15 @@ import Ajou_backend.project.Table.DTO.UserDto;
 import Ajou_backend.project.Table.Entity.Hashtag;
 import Ajou_backend.project.Table.Entity.Link;
 import Ajou_backend.project.Table.Entity.User;
+import Ajou_backend.project.User.Repository.HashtagRepository;
 import Ajou_backend.project.User.Repository.LinkRepository;
 import Ajou_backend.project.User.Repository.UserRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +37,11 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final LinkRepository linkRepository;
+    private final HashtagRepository hashtagRepository;
     private final JwtProvider jwtProvider;
 
-    public void saveHash(User user, List<HashtagDto> hashtagDtoList) {
-        Hashtag hash;
-        for (HashtagDto ele : hashtagDtoList) {
-            hash = new Hashtag(ele);
+    public void saveHash(User user, List<Hashtag> hashtagList) {
+        for (Hashtag hash : hashtagList) {
             Link link = new Link();
             link.setUser(user);
             link.setHashtag(hash);
@@ -46,19 +49,48 @@ public class UserService {
         }
     }
 
+    public UserDto getjsonUser(JSONObject object) throws CustomException {
+        JSONParser jsonParser = new JSONParser();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String jsonStr = mapper.writeValueAsString(object.get("user"));
+            JSONObject jsonUser = (JSONObject) jsonParser.parse(jsonStr);
+
+            UserDto userDto = new UserDto();
+            userDto.setGrade((Long) jsonUser.get("grade"));
+            userDto.setEmail((String) jsonUser.get("email"));
+            userDto.setMajor((String) jsonUser.get("major"));
+            userDto.setPassword((String) jsonUser.get("password"));
+            return userDto ;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Hashtag> getHashtagList(JSONObject object) throws CustomException {
+
+        List<Hashtag> hashtagList = new ArrayList<>();
+        for (Object keyword : (List) object.get("keyword")) {
+            log.info("keyword = " + keyword);
+            hashtagList.add(hashtagRepository.findByKeyword((String)keyword));
+
+        }
+        return hashtagList;
+    }
 
     //회원 가입
-    public Long join(UserDto userDto, List<HashtagDto> hashtagDtoList) throws CustomException {
-        User user = userRepository.findByUserId(userDto.getUserId());
+    public Long join(JSONObject object) throws CustomException {
+        UserDto userDto = getjsonUser(object);
+        User user = userRepository.findByEmail(userDto.getEmail());
         if (user != null) {
             throw new CustomException(ERR_DUPLICATE_ID);
         }
         user = new User(userDto);
         userRepository.save(user);
-        Long userId = user.getUserId();
-        saveHash(user, hashtagDtoList);
-
-        return userId;
+        List<Hashtag> hashtagList = getHashtagList(object);
+        saveHash(user, hashtagList);
+        return user.getUserId();
     }
 
 
@@ -90,6 +122,7 @@ public class UserService {
         ret.put("hashtag", linkArr);
         return ret;
     }
+
     public void deleteUser(Long userId) {
         linkRepository.deleteByUser_UserId(userId);
         userRepository.deleteByUserId(userId);
@@ -109,27 +142,28 @@ public class UserService {
     }
 
 
-    public Link getLink(Long userId, Hashtag hashtag) {
-        Link link = linkRepository.findByUser_UserIdAndHashtag_HashtagId(userId, hashtag.getHashtagId());
-        if (link == null) {
-            link = new Link();
-            link.setUser(getUser(userId));
-            link.setHashtag(hashtag);
-            linkRepository.save(link);
-        }
-        return link;
-    }
+//    public Link getLink(Long userId, Hashtag hashtag) {
+//        Link link = linkRepository.findByUser_UserIdAndHashtag_HashtagId(userId, hashtag.getHashtagId());
+//        if (link == null) {
+//            link = new Link();
+//            link.setUser(getUser(userId));
+//            link.setHashtag(hashtag);
+//            linkRepository.save(link);
+//        }
+//        return link;
+//    }
 
     @Transactional
-    public void update(Long userId, UserDto userDto, List<HashtagDto> hashtagDtoList) {
-        User user = getUser(userId);
+    public void update(JSONObject object) {
+        UserDto userDto = getjsonUser(object);
+        User user = userRepository.findByEmail(userDto.getEmail());
         user.setEmail(userDto.getEmail());
         user.setMajor(userDto.getMajor());
         user.setGrade(userDto.getGrade());
         user.setPassword(userDto.getPassword());
-
-        linkRepository.deleteByUser_UserId(userId);
-        saveHash(user, hashtagDtoList);
+        List<Hashtag> hashtagList = getHashtagList(object);
+        linkRepository.deleteByUser_UserId(user.getUserId());
+        saveHash(user, hashtagList);
     }
 }
 

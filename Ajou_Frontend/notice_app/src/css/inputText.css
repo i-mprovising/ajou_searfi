@@ -60,7 +60,7 @@
   outline-color: var(--outline-color);
   border-width: 0;
   border-radius: 1.6vh;
-/*  box-shadow: var(--box-shadow-light); */
+  /*  box-shadow: var(--box-shadow-light); */
 }
 
 .inputBox input::placeholder {

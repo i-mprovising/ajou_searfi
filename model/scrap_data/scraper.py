@@ -50,7 +50,7 @@ def preprocess(text):
 def repeated_notices(ES:ElasticsearchHandler, data_list):
     threshold = 20
     # repeated_data index에서 검색하여 score가 일정 이상이면 index update
-    INDEX = "repeated_data"
+    INDEX = "repeated_datas"
     # ES.create_index(INDEX) # create index if not exists
 
     for data in data_list:

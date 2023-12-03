@@ -17,7 +17,7 @@ def get_soup(url):
   except:
     print(requests.get(url).status_code)
 
-def scrap(cfg, date, it=20):
+def scrap(cfg, date, it=59):
   data_list = []
   if it == None: it = 2
   for i in range(it):
@@ -53,9 +53,10 @@ def get_data(results, page):
       inside = get_soup(page + link)
       data['time'] = inside.select_one("meta[property='article:published_time']")['content'][11:-1]
       data['view'] = inside.select('div.b-etc-box>ul>li.b-hit-box>span')[1].text
-      data['id'] = inside.select_one('div.bn-view-common01>input')['value']
+      data['num'] = inside.select_one('div.bn-view-common01>input')['value']
       data_list.append(data)
       print(data['title'], data['date'])
+
     except Exception as e:
       print(e)
   

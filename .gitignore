@@ -159,3 +159,5 @@ cython_debug/
 /model/.env
 
 /Ajou_Backend/src/main/resources/application.properties
+
+.vscode/

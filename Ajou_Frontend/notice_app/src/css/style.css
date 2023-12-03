@@ -1,7 +1,8 @@
 :root {
-  --box-shadow: 0.1vw 0.3vh 0.5vw 0.3vh #c0c0c0;
-  --box-shadow-light: 0.1vw 0.3vh 0.5vw 0.2vh #ececec;
-  --text-shadow: 0.12vw 0.2vh 0.5vh #a0a0a0;
+  --box-shadow: 0.1vh 0.3vh 0.5vh 0.3vh #c0c0c0;
+  --box-shadow-light: 0.1vh 0.3vh 0.5vh 0.2vh #ececec;
+  --box-shadow-small: 0.1vh 0.2vh 0.3vh 0.1vh #c0c0c0;
+  --text-shadow: 0.12vh 0.2vh 0.5vh #a0a0a0;
   --outline-color: #066aba;
   --button-color: #066aba;
 }
@@ -12,7 +13,7 @@
 }
 
 .appContainer {
-  height: calc(100vh - 50px - 3vh); /* barNav height 50px + padding-top 제외 */
+  height: calc(100vh - 5.4vh - 3vh); /* barNav height 5.4vh + padding-top 제외 */
   min-height: 300px;
   min-width: 200px;
   padding-top: 3vh;

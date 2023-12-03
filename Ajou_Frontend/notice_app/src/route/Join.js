@@ -73,7 +73,7 @@ export default function Join() {
 
   swal.setControl(control, true);
 
-  async function onSubmit(submitData) {
+  function onSubmit(submitData) {
     if (getValues('password') !== getValues('passwordConfirm')) {
       return swal.alert("비밀번호가 일치하지 않습니다.", "passwordConfirm");
     }
@@ -118,7 +118,7 @@ export default function Join() {
       swal.alertOk("이 이메일은 사용 가능 합니다.", "grade");
     })
     .catch((error) => {
-      swal.alertErr("이 이메일은 사용할 수 없습니다.", "email");
+      swal.alertErr("이 이메일은 이미 가입되어 있습니다.", "email");
     });
   }
 

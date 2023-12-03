@@ -14,28 +14,41 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/Ajou_backend/project/Python/Code/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/Ajou_backend/project/Python/Code/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/Ajou_backend/project/Python/Code/es_handler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/Ajou_backend/project/Python/Code/search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/Ajou_backend/project/Python/Code/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Code/es_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Code/es_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Code/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Code/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Code/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Component/PythonComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Python/Component/PythonComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Controller/NoticeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Service/NoticeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/11.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/13.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/14.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/15.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/16.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/17.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/18.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/18.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/API/UserAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/API/UserAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/barHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/barHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/css/notice.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/css/notice.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Join.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Join.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/MyPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/MyPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Notice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Notice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/es_handler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

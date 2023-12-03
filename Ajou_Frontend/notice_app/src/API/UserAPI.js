@@ -27,8 +27,12 @@ const UserAPI = {
     return axwrap.delete('/user/delete', UserAPI.getHeader());
   },
 
+  doLogin: (loginData) => { // 로그인
+    return axwrap.post('/user/login', loginData, UserAPI.getHeader());
+  },
+
   IdCheck: (id) => { // 이메일 중복 체크
-    return axwrap.post('/idcheck', { email: id }, UserAPI.getJSONheader());
+    return axwrap.post('/user/idcheck', { email: id }, UserAPI.getJSONheader());
   },
 
 }

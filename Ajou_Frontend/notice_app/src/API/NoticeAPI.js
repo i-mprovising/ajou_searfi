@@ -8,7 +8,7 @@ const NoticeAPI = {
   },
 
   getSearchList: (keyword) => { // 검색 목록 가져오기
-    return axwrap.get('/notice/search', keyword);
+    return axwrap.post('/notice/search', { keyword: keyword }, NoticeAPI.getJSONheader());
   }
 
 }

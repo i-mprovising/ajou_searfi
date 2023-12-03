@@ -36,23 +36,23 @@ public class NoticeService {
         for (Link link : linkRepository.findByUser(user)) {
             hashTag.add(link.getHashtag().getKeyword());
         }
-        hashTag = parseList(pythonComponent.runPython(hashTag.toString()));
-        log.info("notice=" + hashTag.toString());
+        hashTag = parseList(pythonComponent.runPython(hashTag.toString(), 1));
 
-        return hashTag;
-    }
-
-    public List<Object> getNoticeByKeyword(String keyword) {
-        List<Object> hashTag = new ArrayList<>();
-        hashTag = parseList(pythonComponent.runPython("[" + keyword + "]"));
         return hashTag;
     }
 
     public List<Object> getNoticeByAll() {
         List<Object> hashTag = new ArrayList<>();
-        hashTag = parseList(pythonComponent.runPython("[]"));
+        hashTag = parseList(pythonComponent.runPython("[]", 1));
         return hashTag;
     }
+
+    public List<Object> getNoticeByKeyword(String keyword) {
+        List<Object> hashTag = new ArrayList<>();
+        hashTag = parseList(pythonComponent.runPython(keyword, 2));
+        return hashTag;
+    }
+
 
     public List<Object> parseList(String jsonStr) {
 
@@ -63,7 +63,7 @@ public class NoticeService {
         }
         try { // java.io.exception 발생하는 코드 기입
             JSONParser parser = new JSONParser();
-            log.info("" + parser.parse(jsonStr));
+//            log.info("" + parser.parse(jsonStr));
             JSONArray jsonArray = (JSONArray) parser.parse(jsonStr);
             for (Object arr : jsonArray) {
                 JSONObject json = (JSONObject) arr;

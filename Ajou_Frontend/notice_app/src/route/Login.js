@@ -6,8 +6,8 @@ import * as yup from "yup";
 
 import gVar from "../const/GlobalVar";
 import authLogin from "../const/AuthLogin";
+import userAPI from "../API/UserAPI";
 import swal from "../component/Swal";
-import axwrap from "../component/AxWrap";
 import InputText from "../component/InputText";
 
 export default function Login() {
@@ -46,16 +46,13 @@ export default function Login() {
 
   swal.setControl(control, true);
 
-  async function onSubmit(submitData) {
-
-    await axwrap
-      .post('/user/login', submitData) // 템플릿 리터럴 사용
+  function onSubmit(submitData) {
+    userAPI.doLogin(submitData)
       .then((data) => {
-        var jwtToken = data.token; // 토큰 값을 추출
 //console.log("data=" + data);
 
-        if (jwtToken !== null) {
-          authLogin.setToken(jwtToken); // 토큰을 로컬 스토리지에 저장
+        if (data.token !== null) {
+          authLogin.setToken(data.token); // 토큰을 로컬 스토리지에 저장
 //console.log("token=" + authLogin.getToken());
         }
         navigate("/");
@@ -75,7 +72,7 @@ export default function Login() {
 
   function onKeyDownPassword(e) {
     return false;
-    // return false는 InpuText.js의 onKeyDownInput()에서 Enter키 처리부분을
+    // return false는 InputText.js의 onKeyDownInput()에서 Enter키 처리부분을
     // 실행하지 않아서 e.preventDefault()를 하지 못하도록 함
     // 이렇게 하면 Enter 키 눌렸을 때 submit button이 클릭되고
     // onClickSubmitButton()을 실행하게 됨
@@ -98,7 +95,7 @@ export default function Login() {
             maxLength="16" tabIndex="2"
             label="Password"
             placeholder="비밀번호를 입력해주세요."
-	    onKeyDown={onKeyDownPassword}
+            onKeyDown={onKeyDownPassword}
             error={errors}
             {...register("password")}
           />

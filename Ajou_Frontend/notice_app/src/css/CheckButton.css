@@ -6,7 +6,7 @@
 /*  font-weight: 600; */
   color: black;
   background-color: #efefef;
-  border-width: 0px;
+  border-width: 0;
   border-radius: 1vh;
   cursor: pointer;
   transition: all 0.2s linear;
@@ -21,7 +21,7 @@
 /*  font-weight: 600; */
   color: black;
   background-color: #c8e6ff;
-  border-width: 0px;
+  border-width: 0;
   border-radius: 1vh;
   cursor: pointer;
   transition: all 0.2s linear;

@@ -4,6 +4,7 @@ import Ajou_backend.project.User.Service.UserService;
 import Ajou_backend.project.notice.Service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,14 +33,15 @@ public class NoticeController {
         } else {
             notice = noticeService.getNoticeByAll();
         }
-        log.info("list = " + notice);
+//        log.info("list = " + notice);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<?> noticeSearch(@RequestHeader HttpHeaders header, @RequestBody String keyword) {
+    @PostMapping("/search")
+    public ResponseEntity<?> noticeSearch(@RequestBody JSONObject jsonObject) {
+//        log.info("keyword = " + jsonObject.get("keyword"));
         List<Object> notice = new ArrayList<>();
-        notice = noticeService.getNoticeByKeyword(keyword);
+        notice = noticeService.getNoticeByKeyword((String)jsonObject.get("keyword"));
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 

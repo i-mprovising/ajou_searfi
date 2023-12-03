@@ -4,11 +4,13 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  height: calc(50px - 5px); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
+  height: calc(5.4vh - 0.6vh); /* boder-bottom 0.6vh 제외, border 포함하여 5.4vh가 됨 */
   margin: 0;
+  font-size: 1.9vh;
+  text-shadow: 0.07vh 0.07vh 0.21vh #a0a0a0;
   color: black;
   background: white;
-  border-bottom: solid 5px #066aba;
+  border-bottom: solid 0.6vh #066aba;
   box-shadow: var(--box-shadow);
 
   -webkit-user-select: none; /* Safari */
@@ -21,7 +23,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 20px;
+  margin-left: 2vh;
   cursor: pointer;
   transition: all 0.2s linear;
 }
@@ -32,8 +34,12 @@
 
 .barNavTitle {
   font-weight: 400;
-  text-shadow: 1px 1px 3px #a0a0a0;
-  margin: 10px;
+  margin: 1.5vh;
+}
+
+.barNavLogo {
+  width: 3.9vh;
+  height: 3.9vh;
 }
 
 .barNavRight {
@@ -42,22 +48,23 @@
   flex-direction: row;
   justify-content: flex-start;
   margin-left: auto;
-  padding-right: 20px;
+  padding-right: 2vh;
 }
 
 .barNavLogout {
   color: #606060;
-  font-size: 11pt;
+  font-size: 1.9vh;
   text-decoration: none;
-  text-shadow: 1px 1px 3px #a0a0a0;
-  margin-right: 15px;
+  margin-right: 1.5vh;
 }
 
 .barNavLogout:hover {
-  font-size: 12pt;
+  font-size: 2vh;
 }
 
 .barNavProfile {
+  width: 3.9vh;
+  height: 3.9vh;
   cursor: pointer;
   transition: all 0.2s linear;
 }

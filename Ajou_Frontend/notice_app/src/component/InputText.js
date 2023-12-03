@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, forwardRef } from "react";
 import { Link } from "react-router-dom";
-import '../css/inputText.css';
+import '../css/InputText.css';
 
 const InputText = forwardRef((props, ref) => {
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import "./css/style.css";
 import "./css/barHeader.css";
 
 import gVar from "./const/GlobalVar";
@@ -33,7 +32,7 @@ function BarHeader() {
       <ScrollToTop />
       <div className="barNav">
         <div className="barNavLeft" onClick={()=>{navigate("/")}}>
-          <img src={imgLogo} alt="" />
+          <img className="barNavLogo" src={imgLogo} alt="" />
           <h3 className="barNavTitle">{gVar.TITLE}~</h3>
 	</div>
 	<span className="barNavRight">

@@ -37,6 +37,11 @@ public class LoginController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Join success");
     }
 
+    @PostMapping("/idcheck")
+    public ResponseEntity<?> idDupCheck(@RequestBody JSONObject object) {
+        userService.dupCheck((String) object.get("email"));
+        return ResponseEntity.status(HttpStatus.CREATED).body(object);
+    }
 
 
     @PostMapping("/login")

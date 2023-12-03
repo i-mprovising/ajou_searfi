@@ -93,7 +93,7 @@ export default function MyPage() {
 
   swal.setControl(control, true);
 
-  async function onSubmit(submitData) {
+  function onSubmit(submitData) {
     if (getValues('password') !== getValues('passwordConfirm')) {
       return swal.alert("비밀번호가 일치하지 않습니다.", "passwordConfirm");
     }
@@ -112,7 +112,7 @@ export default function MyPage() {
       .then((data) => {
 //console.log(data);
          swal.alertOk("회원 정보가 수정되었습니다.",
-           ()=>{ navigate("/login") }
+           ()=>{ navigate("/") }
          );
       })
       .catch((response) => {

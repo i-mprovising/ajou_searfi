@@ -52,6 +52,11 @@
   overflow: hidden;
 }
 
+.noticeSearchImage {
+  width: 3.9vh;
+  height: 3.9vh;
+}
+
 .noticeSearchInput {
   background: transparent !important;
   width: 95% !important;
@@ -66,7 +71,7 @@
   padding-top: 1vh;
 }
 
-.noticeOrder {
+.noticeOrderFrame {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -74,8 +79,23 @@
   width: calc(100% - 4vh); /* padding-right 제외 */
   height: 5vh;
   padding-right: 4vh;
-  font-size: 1.4vh;
   overflow: hidden;
+}
+
+.noticeOrder {
+  font-size: 1.4vh;
+  padding: 0.2vh 1vh;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vh;
+  box-shadow: var(--box-shadow-small);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.noticeOrder:hover {
+  color: white;
+  background-color: #60ace4;
+  transform: scale(1.1);
 }
 
 .noticeItemFrame {
@@ -102,7 +122,9 @@
   transition: all 0.2s linear;
 }
 
-/* item selected color: e0ebf3 */
+.noticeItemSelect {
+  background-color: #e0ebf3;
+}
 
 .noticeItem:hover {
   background-color: #60ace4;

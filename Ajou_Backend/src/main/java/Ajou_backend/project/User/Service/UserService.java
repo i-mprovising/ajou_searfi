@@ -100,6 +100,12 @@ public class UserService {
         return null;
     }
 
+    public String dupCheck(String email){
+        User user = userRepository.findByEmail(email);
+        if (user != null)  throw new CustomException(ERR_DUPLICATE_ID);
+        return email;
+    }
+
     public User getUser(Long userId) {
         User user = userRepository.findByUserId(userId);
         if (user == null) {

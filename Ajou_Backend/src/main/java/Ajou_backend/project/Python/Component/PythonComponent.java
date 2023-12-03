@@ -30,8 +30,8 @@ public class PythonComponent{
         try { // java.io.exception 발생하는 코드 기입
             Process process = processBuilder.start();
 
-//            InputStream inputStream = process.getInputStream();
-            InputStream inputStream = process.getErrorStream();
+            InputStream inputStream = process.getInputStream();
+//            InputStream inputStream = process.getErrorStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 //            log.info("complete");
             while ((line = reader.readLine()) != null) {

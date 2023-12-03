@@ -12,14 +12,22 @@ const AxWrap = {
     return url;
   },
 
-  get: async (url, config) => {
+  // AxWrap.get(url, { headers: { "Content-Type": "application/json" } }); // get의 인자 없을 때
+  // AxWrap.get(url, { qry1: 1, qry2: 2 }, { headers: { "Content-Type": "application/json" } }); // get의 인자가  있을 때
+
+  get: async (url, config_or_params, config) => {
     url = AxWrap.defaultUrl(url);
 
 console.log("AxWrap.get() url="+url);
 
     try {
 
-      const response = await axios.get(url, config);
+      let response;
+      if (config === undefined) {
+         response = await axios.get(url, config_or_params);
+      } else {
+         response = await axios.get(url, { params: {...config_or_params}, ...config });
+      }
       if (response.status >= 200 || response.status < 300) {
         return response.data;
       }

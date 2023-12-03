@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
 
 import authLogin from "../const/AuthLogin";
 import swal from "../component/Swal";
@@ -12,7 +11,7 @@ import '../css/notice.css';
 
 export default function Notice() {
   let [HashtagList, setHashtagList] = useState(null);
-  const [noticeOrder, setNoticeOrder] = useState(1);
+  let [isDateAscendingOrder, setDateAscendingOrder] = useState(false);
   const [selectItem, setSelectItem] = useState(-1);
   const [noticeList, setNoticeList] = useState([]);
 
@@ -30,9 +29,9 @@ export default function Notice() {
       }
 
       noticeAPI.getNoticeList()
-        .then((noti) => {
-console.log(noti);
-          setNotice(noti);
+        .then((noticeData) => {
+console.log(noticeData);
+          prepareNoticeList(noticeData);
         });
 
   }, []); // 비어있는 배열 인자 []가 있으면 useEffect를 1회만 실행함, 인자가 없거나 [v#1,...,v#N]과 같이 배열의 요소가 있으면 렌더링마다 실행함
@@ -61,22 +60,32 @@ console.log(noti);
 //console.log(`onClickHashtag() name=${data.name} checked=${data.checked}`);
   }
 
-  function setNotice(noti) {
-    for (let item of noti) {
+  function sortNoticeList(noticeData) {
+    if (isDateAscendingOrder) { // 과거순
+      noticeData.sort(function(a, b) { return (a.date < b.date) ? -1 : (a.date > b.date) ? 1 : 0; });
+    } else { // 최신순
+      noticeData.sort(function(a, b) { return (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0; });
+    }
+  }
+
+  function prepareNoticeList(noticeData) {
+    for (let item of noticeData) {
       if (item.noticeid.includes("NOTI")) item.noticeid = "아주대학교";
       else if (item.noticeid.includes("SWUN")) item.noticeid = "소프트웨어융합대학";
       else if (item.noticeid.includes("NATU")) item.noticeid = "수학과";
       else if (item.noticeid.includes("SOFT")) item.noticeid = "소프트웨어학과";
     }
 
-    setNoticeList(noti);
+    sortNoticeList(noticeData);
+
+    setNoticeList(noticeData);
   }
 
   function searchKeyword(keyword) {
-console.log(keyword);
+console.log("keyword="+keyword);
     noticeAPI.getSearchList(keyword)
-      .then((noti) => {
-        setNotice(noti);
+      .then((noticeData) => {
+        prepareNoticeList(noticeData);
       })
       .catch((response) => {
         if (response.status === 409) {
@@ -99,9 +108,14 @@ console.log(keyword);
   }
 
   function onClickOrder() {
-    setNoticeOrder((noticeOrder) ? 0 : 1); // 0: 과거순 , 1:최신순
+//console.log("onClickOrder");
 
-    
+    isDateAscendingOrder = !isDateAscendingOrder; // true: 과거순 , false:최신순
+
+    sortNoticeList(noticeList);
+
+    setDateAscendingOrder(isDateAscendingOrder);
+    setNoticeList([ ...noticeList ]);
   }
 
   function onClickNoticeItem(e, index, url) {
@@ -144,7 +158,7 @@ console.log(keyword);
         <div className="noticeBoard" style={{width:"100%", height:"calc(100% - 10vh)"}}>
           <div className="noticeOrderFrame">
             <span className="noticeOrder" onClick={onClickOrder}>
-              {noticeOrder ? "최신순" : "과거순"}
+              {isDateAscendingOrder ? "과거순" : "최신순"}
             </span>
           </div>
           <div className="noticeItemFrame">

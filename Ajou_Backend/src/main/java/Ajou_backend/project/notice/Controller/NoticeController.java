@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public class NoticeController {
     @GetMapping("/list")
     public ResponseEntity<?> noticeList(@RequestHeader HttpHeaders header) {
         Long userId = userService.getLoginId(header);
-        List<Object> notice;
+        List<Object> notice = new ArrayList<>();
         if (userId >= 0) {
             notice = noticeService.getNoticeByHash(userService.getUser(userId));
         } else {
@@ -35,9 +36,11 @@ public class NoticeController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 
-    @PostMapping("/search")
+    @GetMapping("/search")
     public ResponseEntity<?> noticeSearch(@RequestHeader HttpHeaders header, @RequestBody String keyword) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(keyword);
+        List<Object> notice = new ArrayList<>();
+        notice = noticeService.getNoticeByKeyword(keyword);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 
 }

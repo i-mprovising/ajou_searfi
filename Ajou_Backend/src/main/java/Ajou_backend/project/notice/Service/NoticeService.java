@@ -36,7 +36,15 @@ public class NoticeService {
         for (Link link : linkRepository.findByUser(user)) {
             hashTag.add(link.getHashtag().getKeyword());
         }
-        hashTag = parseList(pythonComponent.runPython(hashTag.toString()));;
+        hashTag = parseList(pythonComponent.runPython(hashTag.toString()));
+        log.info("notice=" + hashTag.toString());
+
+        return hashTag;
+    }
+
+    public List<Object> getNoticeByKeyword(String keyword) {
+        List<Object> hashTag = new ArrayList<>();
+        hashTag = parseList(pythonComponent.runPython("[" + keyword + "]"));
         return hashTag;
     }
 
@@ -50,8 +58,8 @@ public class NoticeService {
 
         List<Object> hashTag = new ArrayList<>();
         if (jsonStr == "") {
-            log.info("python 데이터가 없습니다~");
-            throw new CustomException(ERR_NOT_FOUND);
+//            log.info("python 데이터가 없습니다~");
+            return hashTag;
         }
         try { // java.io.exception 발생하는 코드 기입
             JSONParser parser = new JSONParser();

@@ -10,17 +10,17 @@ from es_handler import ElasticsearchHandler
 def search_result(keyword:str):
     # 검색어에 대한 검색 결과
     load_dotenv('.env', verbose=True)
-    uri = "http://34.22.80.28:9200"
+    uri = "http://34.22.76.7:9200"
     ES = ElasticsearchHandler(uri)
     embedding = get_embedding(keyword)
     ES.search_dense(keyword, embedding, index="notice_data", topk=20)
 
     pass
 
-def notice_list(keywords:list):
+def notice_list(ES, INDEX, keywords:list):
     # noticeid, title, date, url
     # load_dotenv('.env', verbose=True)
-    ES = ElasticsearchHandler("http://34.22.80.28:9200")
+    # ES = ElasticsearchHandler("http://34.22.80.28:9200")
 
     if len(keywords) == 0:
         a_month_before = datetime.now().date() + timedelta(days=-30)
@@ -61,9 +61,11 @@ if __name__=="__main__":
     parser.add_argument('--func', '-f', type=str, help="function to use")
     parser.add_argument('--input', '-i', type=str, help="input of the function")
     args = parser.parse_args()
+    ES = ElasticsearchHandler("http://34.22.80.28:9200")
+    INDEX="notice_data"
     if args.func == "notice_list":
         if args.input == "[]":
-            print(json.dumps(notice_list([])))
+            print(json.dumps(ES, INDEX, notice_list([])))
         else:
             input = args.input[1:-1].split(',')
             print(json.dumps(notice_list(ES, INDEX, input)))

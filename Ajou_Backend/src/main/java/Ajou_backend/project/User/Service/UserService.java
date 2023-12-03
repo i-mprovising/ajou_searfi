@@ -68,7 +68,7 @@ public class UserService {
 
         List<Hashtag> hashtagList = new ArrayList<>();
         for (Object keyword : (List) object.get("keyword")) {
-            log.info("keyword = " + keyword);
+//            log.info("keyword = " + keyword);
             hashtagList.add(hashtagRepository.findByKeyword((String)keyword));
 
         }

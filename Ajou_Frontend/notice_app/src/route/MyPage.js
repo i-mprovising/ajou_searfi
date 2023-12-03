@@ -112,7 +112,7 @@ export default function MyPage() {
       .then((data) => {
 //console.log(data);
          swal.alertOk("회원 정보가 수정되었습니다.",
-           ()=>{ navigate("/") }
+           ()=>{ navigate("/login") }
          );
       })
       .catch((response) => {

@@ -40,12 +40,12 @@ def get_data(soup, page):
       if len(res)!=7: continue
 
       data['page'] = 'MATH'
-      data['id'] = res[0].text
+      data['num'] = res[0].text
       link = res[1].select_one('a')['href'] # 페이지 링크
       data['url'] = page+link
       data['title'] = res[1].select_one('a').text.strip()
       data['category'] = res[4].text
-      data['due'] = res[5].select_one('img').text
+    #   data['due'] = res[5].select_one('img').text
       data['dept'] = res[6].text
       
       # 페이지 내부에서 
@@ -53,6 +53,7 @@ def get_data(soup, page):
       tmp_soup = inside.select('div.view_wrap>table')[0].select('tr')[2].select('td')
       data['date'] = tmp_soup[1].text
       data['view'] = tmp_soup[4].text
+      data['time'] = "00:00:00"
       data_list.append(data)
       print(data['title'], data['date'])
     except Exception as e:

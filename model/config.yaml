@@ -16,6 +16,7 @@ software:
   scrap: 1
   url: http://software.ajou.ac.kr
 swuniv:
+  date: '2023-12-02'
   qstr: ?mode=list&&articleLimit=10&article.offset=
   scrap: 0
   url: https://www.ajou.ac.kr/sw/board/notice.do

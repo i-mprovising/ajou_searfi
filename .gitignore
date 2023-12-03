@@ -155,3 +155,4 @@ cython_debug/
 # Custom
 /model/test/
 /model/.env
+.vscode/

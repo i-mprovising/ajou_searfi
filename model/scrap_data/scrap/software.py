@@ -38,7 +38,9 @@ def get_data(soup, page):
       res = results[i].select('td')
       if len(res) != 10: continue
       data['page'] = "SOFT"
-      data['id'] = res[0].text.strip()
+      data['category'] = 'sw'
+      data['dept'] = 'sw'
+      data['num'] = res[0].text.strip()
       link = res[2].select_one('a')['href']
       data['url'] = page+link
       data['title'] = res[2].select_one('a').text.strip()

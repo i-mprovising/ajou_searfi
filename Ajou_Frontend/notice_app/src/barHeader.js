@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./css/style.css";
+import "./css/barHeader.css";
 
-import GVar from "./const/GlobalVar";
+import gVar from "./const/GlobalVar";
+import authLogin from "./const/AuthLogin";
 import imgLogo from "./image/logo.png";
 import imgProfile from "./image/profile.png";
 
@@ -16,15 +18,32 @@ function BarHeader() {
     useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   }
 
+  function onClickProfile() {
+    navigate(authLogin.isLogin() ? "/MyPage" : "/Login");
+  }
+
+  function onClickLogout(e) {
+    e.preventDefault();
+    authLogin.removeToken();
+    navigate("/");
+  }
+
   return (
     <header>
       <ScrollToTop />
       <div className="barNav">
-        <div className="barNavLogo" onClick={()=>{navigate("/")}}>
+        <div className="barNavLeft" onClick={()=>{navigate("/")}}>
           <img src={imgLogo} alt="" />
-          <h3 className="barNavTitle">{GVar.TITLE}~</h3>
+          <h3 className="barNavTitle">{gVar.TITLE}~</h3>
 	</div>
-        <img className="barImgProfile"  src={imgProfile} alt="" onClick={()=>{navigate("/MyPage")}} />
+	<span className="barNavRight">
+          { authLogin.isLogin() &&
+            <Link className="barNavLogout" onClick={onClickLogout}>
+              Logout
+            </Link>
+          }
+          <img className="barNavProfile" src={imgProfile} alt="" onClick={onClickProfile} />
+	</span>
       </div>
     </header>
   );

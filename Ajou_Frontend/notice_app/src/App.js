@@ -10,7 +10,7 @@ import Notice from "./route/Notice";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Notice />} />
       <Route path="/join" element={<Join />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/login" element={<Login />} />

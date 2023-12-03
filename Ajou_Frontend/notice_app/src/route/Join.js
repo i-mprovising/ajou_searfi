@@ -84,8 +84,7 @@ export default function Join() {
     for (let item in HashtagList) { // HashtagList는 객체
       if (HashtagList[item]) hashtag.push(item);
     }
-    data.keyword = hashtag;
-    const userData = { user: data };
+    const userData = { user: data, keyword: hashtag };
 
 //console.log(userData);
 

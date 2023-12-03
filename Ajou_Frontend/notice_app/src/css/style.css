@@ -11,41 +11,6 @@
   height: 100%;
 }
 
-.barNav {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  height: calc(50px - 5px); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
-  margin: 0;
-  color: black;
-  background: white;
-  border-bottom: solid 5px #066aba;
-  box-shadow: var(--box-shadow);
-}
-
-.barNavLogo {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-.barNavTitle {
-  font-weight: 400;
-  text-shadow: 1px 1px 3px #a0a0a0;
-  margin: 10px;
-}
-
-.barImgProfile {
-  margin-left: auto;
-  padding-right: 20px;
-  cursor: pointer;
-}
-
 .appContainer {
   height: calc(100vh - 50px - 3vh); /* barNav height 50px + padding-top 제외 */
   min-height: 300px;

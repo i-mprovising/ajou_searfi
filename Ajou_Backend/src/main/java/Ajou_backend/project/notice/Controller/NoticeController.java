@@ -1,9 +1,5 @@
 package Ajou_backend.project.notice.Controller;
 
-import Ajou_backend.project.JWT.AuthRequest;
-import Ajou_backend.project.JWT.JwtProvider;
-import Ajou_backend.project.Table.DTO.UserDto;
-import Ajou_backend.project.Table.Entity.Hashtag;
 import Ajou_backend.project.User.Service.UserService;
 import Ajou_backend.project.notice.Service.NoticeService;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +24,15 @@ public class NoticeController {
 
     @GetMapping("/list")
     public ResponseEntity<?> noticeList(@RequestHeader HttpHeaders header) {
-        Long userId = userService.loginCheck(header);
-        List<Object> hashTag = noticeService.getNoticeByHash(userService.getUser(userId));
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(hashTag);
+        Long userId = userService.getLoginId(header);
+        List<Object> notice;
+        if (userId >= 0) {
+            notice = noticeService.getNoticeByHash(userService.getUser(userId));
+        } else {
+            notice = noticeService.getNoticeByAll();
+        }
+        log.info("list = " + notice);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 
     @PostMapping("/search")

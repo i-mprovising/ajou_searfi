@@ -4,7 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54610053-1a0a-4318-a55c-4224ca85529b" name="Changes" comment="" />
+    <list default="true" id="54610053-1a0a-4318-a55c-4224ca85529b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ajou_backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ajou_backend.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/HashtagDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/HashtagDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/LinkDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/LinkDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/DTO/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/Entity/Hashtag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/Entity/Hashtag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/Entity/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/Entity/Link.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/Table/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/MypageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Controller/MypageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/HashtagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/HashtagRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/LinkRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/LinkRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/User/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Controller/NoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Repository/NoticeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Repository/NoticeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ajou_backend/project/notice/Service/NoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/11.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/12.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/13.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/14.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/16.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/17.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/18.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/18.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/API/UserAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/API/UserAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/barHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/barHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/const/GlobalVar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/const/GlobalVar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/css/notice.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/css/notice.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Join.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/MyPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/MyPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Notice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ajou_Frontend/notice_app/src/route/Notice.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,25 +106,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/jiyseo/Documents/4-2/Project/ajou_searfi/Ajou_Backend",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jiyseo/Documents/4-2/Project/ajou_searfi/Ajou_Backend&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Ajou_backend.project.User.Service" />
+      <recent name="Ajou_backend.project.notice.Controller" />
       <recent name="Ajou_backend.project.User.Repository" />
       <recent name="Ajou_backend.project.notice.Service" />
       <recent name="Ajou_backend.project.notice.Repository" />
-      <recent name="Ajou_backend.project.notice.Controller" />
     </key>
   </component>
   <component name="RunManager">

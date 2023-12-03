@@ -1,10 +1,8 @@
 package Ajou_backend.project.Table.DTO;
 
-import Ajou_backend.project.Table.Entity.User;
+import Ajou_backend.project.User.Controller.Entity.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 
 @Data

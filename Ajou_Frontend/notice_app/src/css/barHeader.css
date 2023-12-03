@@ -1,0 +1,67 @@
+.barNav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: calc(50px - 5px); /* boder-bottom 5px 제외, border 포함하여 50px이 됨 */
+  margin: 0;
+  color: black;
+  background: white;
+  border-bottom: solid 5px #066aba;
+  box-shadow: var(--box-shadow);
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.barNavLeft {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.barNavLeft:hover {
+  transform: scale(1.1);
+}
+
+.barNavTitle {
+  font-weight: 400;
+  text-shadow: 1px 1px 3px #a0a0a0;
+  margin: 10px;
+}
+
+.barNavRight {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.barNavLogout {
+  color: #606060;
+  font-size: 11pt;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px #a0a0a0;
+  margin-right: 15px;
+}
+
+.barNavLogout:hover {
+  font-size: 12pt;
+}
+
+.barNavProfile {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.barNavProfile:hover {
+  transform: scale(1.1);
+}

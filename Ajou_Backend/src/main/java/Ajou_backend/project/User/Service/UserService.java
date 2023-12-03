@@ -2,11 +2,10 @@ package Ajou_backend.project.User.Service;
 
 import Ajou_backend.project.Error.CustomException;
 import Ajou_backend.project.JWT.JwtProvider;
-import Ajou_backend.project.Table.DTO.HashtagDto;
 import Ajou_backend.project.Table.DTO.UserDto;
-import Ajou_backend.project.Table.Entity.Hashtag;
-import Ajou_backend.project.Table.Entity.Link;
-import Ajou_backend.project.Table.Entity.User;
+import Ajou_backend.project.User.Controller.Entity.Hashtag;
+import Ajou_backend.project.User.Controller.Entity.Link;
+import Ajou_backend.project.User.Controller.Entity.User;
 import Ajou_backend.project.User.Repository.HashtagRepository;
 import Ajou_backend.project.User.Repository.LinkRepository;
 import Ajou_backend.project.User.Repository.UserRepository;
@@ -22,9 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static Ajou_backend.project.Error.ErrorCode.*;
 
@@ -55,9 +52,8 @@ public class UserService {
         try {
             String jsonStr = mapper.writeValueAsString(object.get("user"));
             JSONObject jsonUser = (JSONObject) jsonParser.parse(jsonStr);
-
             UserDto userDto = new UserDto();
-            userDto.setGrade((Long) jsonUser.get("grade"));
+            userDto.setGrade(Long.valueOf((String) jsonUser.get("grade")));
             userDto.setEmail((String) jsonUser.get("email"));
             userDto.setMajor((String) jsonUser.get("major"));
             userDto.setPassword((String) jsonUser.get("password"));
@@ -86,6 +82,7 @@ public class UserService {
         if (user != null) {
             throw new CustomException(ERR_DUPLICATE_ID);
         }
+        log.info("user = "+ user);
         user = new User(userDto);
         userRepository.save(user);
         List<Hashtag> hashtagList = getHashtagList(object);
@@ -111,21 +108,33 @@ public class UserService {
         return user;
     }
 
-    public Map<String, Object> getUserInfo(Long userId) {
-        Map<String, Object> ret = new HashMap<>();
+    public JSONObject getUserInfo(Long userId) {
+        JSONObject jsonObject = new JSONObject();
         List<Link> linkList = linkRepository.findByUser(getUser(userId));
-        ret.put("user", new UserDto(getUser(userId)));
+        jsonObject.put("user", getUser(userId));
         List<String> linkArr = new ArrayList<>();
         for (Link link : linkList) {
             linkArr.add(link.getHashtag().getKeyword());
         }
-        ret.put("hashtag", linkArr);
-        return ret;
+        jsonObject.put("keyword", linkArr);
+        return jsonObject;
     }
 
     public void deleteUser(Long userId) {
         linkRepository.deleteByUser_UserId(userId);
         userRepository.deleteByUserId(userId);
+    }
+
+    public Long getLoginId(HttpHeaders header) throws CustomException {
+        String token = header.getFirst("Authorization");
+        log.info("token="+token);
+        try {
+            Claims claims = jwtProvider.parseJwtToken(token);
+            User user = userRepository.findByUserId(Long.parseLong(claims.getSubject()));
+            return user.getUserId();
+        } catch (Exception e) {
+            return Long.valueOf(-1);
+        }
     }
 
     public Long loginCheck(HttpHeaders header) throws CustomException {

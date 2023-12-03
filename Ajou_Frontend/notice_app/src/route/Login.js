@@ -49,7 +49,7 @@ export default function Login() {
   async function onSubmit(submitData) {
 
     await axwrap
-      .post('/login', submitData) // 템플릿 리터럴 사용
+      .post('/user/login', submitData) // 템플릿 리터럴 사용
       .then((data) => {
         var jwtToken = data.token; // 토큰 값을 추출
 //console.log("data=" + data);
@@ -73,6 +73,14 @@ export default function Login() {
     swal.alert("이메일과 암호 입력을 완료하고 버튼을 클릭하세요.");
   }
 
+  function onKeyDownPassword(e) {
+    return false;
+    // return false는 InpuText.js의 onKeyDownInput()에서 Enter키 처리부분을
+    // 실행하지 않아서 e.preventDefault()를 하지 못하도록 함
+    // 이렇게 하면 Enter 키 눌렸을 때 submit button이 클릭되고
+    // onClickSubmitButton()을 실행하게 됨
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
     <div className="contentBoard" style={{ width: "calc(50vh * 1.5)", height: "45vh" }}>
@@ -90,6 +98,7 @@ export default function Login() {
             maxLength="16" tabIndex="2"
             label="Password"
             placeholder="비밀번호를 입력해주세요."
+	    onKeyDown={onKeyDownPassword}
             error={errors}
             {...register("password")}
           />

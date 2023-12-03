@@ -1,7 +1,7 @@
 package Ajou_backend.project.User.Repository;
 
-import Ajou_backend.project.Table.Entity.Link;
-import Ajou_backend.project.Table.Entity.User;
+import Ajou_backend.project.User.Controller.Entity.Link;
+import Ajou_backend.project.User.Controller.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

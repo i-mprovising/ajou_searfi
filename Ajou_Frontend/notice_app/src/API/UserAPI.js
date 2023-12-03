@@ -3,12 +3,16 @@ import axwrap from "../component/AxWrap";
 
 const UserAPI = {
 
+//  아래 __proto__는 deprecated 됨, 사용하지 말고 아래의 Object.setPrototypeOf()를 사용할 것
+
+//  __proto__ : baseAPI, // baseAPI prototype 사용
+
   getHashtagInfo: () => { // hashtag 목록 가져오기
-    return axwrap.get('/hashtag', UserAPI.getHeader());
+    return axwrap.get('/mypage/hashtag', UserAPI.getHeader());
   },
 
   joinUser: (userData) => { // 사용자 신규 가입
-    return axwrap.post('/join', userData, UserAPI.getJSONheader());
+    return axwrap.post('/user/join', userData, UserAPI.getJSONheader());
   },
 
   getUserInfo: () => { // 사용자 정보

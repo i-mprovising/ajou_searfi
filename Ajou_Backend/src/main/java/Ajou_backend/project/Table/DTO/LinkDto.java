@@ -1,6 +1,6 @@
 package Ajou_backend.project.Table.DTO;
 
-import Ajou_backend.project.Table.Entity.Link;
+import Ajou_backend.project.User.Controller.Entity.Link;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

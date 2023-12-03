@@ -2,8 +2,8 @@ package Ajou_backend.project.notice.Service;
 
 import Ajou_backend.project.Error.CustomException;
 import Ajou_backend.project.Python.Component.PythonComponent;
-import Ajou_backend.project.Table.Entity.Link;
-import Ajou_backend.project.Table.Entity.User;
+import Ajou_backend.project.User.Controller.Entity.Link;
+import Ajou_backend.project.User.Controller.Entity.User;
 import Ajou_backend.project.User.Repository.LinkRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +37,12 @@ public class NoticeService {
             hashTag.add(link.getHashtag().getKeyword());
         }
         hashTag = parseList(pythonComponent.runPython(hashTag.toString()));;
+        return hashTag;
+    }
+
+    public List<Object> getNoticeByAll() {
+        List<Object> hashTag = new ArrayList<>();
+        hashTag = parseList(pythonComponent.runPython("[]"));
         return hashTag;
     }
 

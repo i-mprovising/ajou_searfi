@@ -1,10 +1,8 @@
 package Ajou_backend.project.Table.DTO;
 
-import Ajou_backend.project.Table.Entity.Hashtag;
+import Ajou_backend.project.User.Controller.Entity.Hashtag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
 
 
 @Data

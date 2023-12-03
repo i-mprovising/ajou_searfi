@@ -27,14 +27,14 @@ export default function MyPage() {
         userAPI.getUserInfo()
           .then((data) => {
 //console.log(data);
-            data = data.user;
+            var user = data.user;
             // setValue 안하고 Gvar.setValue 한 이유는
             // eslint 경고 'React Hook useEffect has a missing dependency' 안나오게 하려고 한 것임
-            gVar.setValue('email', data.email);
-            gVar.setValue('grade', data.grade);
-            gVar.setValue('major', data.major);
-            gVar.setValue('password', data.password);
-            gVar.setValue('passwordConfirm', data.password);
+            gVar.setValue('email', user.email);
+            gVar.setValue('grade', user.grade);
+            gVar.setValue('major', user.major);
+            gVar.setValue('password', user.password);
+            gVar.setValue('passwordConfirm', user.password);
 
             for (item of data.keyword) hashtag[item] = 1;
             setHashtagList(hashtag);
@@ -104,8 +104,7 @@ export default function MyPage() {
     for (let key in HashtagList) {
       if (HashtagList[key]) hashtag.push(key);
     }
-    data.keyword = hashtag;
-    const userData = { user: data };
+    const userData = { user: data, keyword: hashtag };
 
 //console.log(userData);
 
@@ -113,7 +112,7 @@ export default function MyPage() {
       .then((data) => {
 //console.log(data);
          swal.alertOk("회원 정보가 수정되었습니다.",
-           ()=>{ navigate("/login") }
+           ()=>{ navigate("/") }
          );
       })
       .catch((response) => {

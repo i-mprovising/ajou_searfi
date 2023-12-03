@@ -2,6 +2,7 @@ package Ajou_backend.project.User.Controller;
 
 import Ajou_backend.project.Table.DTO.HashtagDto;
 import Ajou_backend.project.Table.DTO.UserDto;
+import Ajou_backend.project.User.Service.HashtagService;
 import Ajou_backend.project.User.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,17 +24,27 @@ import java.util.Map;
 public class MypageController {
 
     private final UserService userService;
+    private final HashtagService hashtagService;
 
     @GetMapping("")
-    public ResponseEntity<Map<String, Object>> myInfo(@RequestHeader HttpHeaders header) {
+    public ResponseEntity<JSONObject> myInfo(@RequestHeader HttpHeaders header) {
         Long userId = userService.loginCheck(header);
-        Map<String, Object> map = userService.getUserInfo(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(map);
+        JSONObject jsonObject = userService.getUserInfo(userId);
+        log.info("json = " + jsonObject);
+        return ResponseEntity.status(HttpStatus.OK).body(jsonObject);
     }
     @PatchMapping("/update")
     public ResponseEntity update(@RequestHeader HttpHeaders header, @RequestBody JSONObject object) throws Exception {
         Long userId = userService.loginCheck(header);
         userService.update(object);
         return ResponseEntity.status(HttpStatus.OK).body("Update Success");
+    }
+    @GetMapping("/hashtag")
+    public ResponseEntity<JSONObject> myInfo() {
+        List<String> hashtagList = hashtagService.getHashtagList();
+        log.info("list = " + hashtagList);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("keyword", hashtagList);
+        return ResponseEntity.status(HttpStatus.OK).body(jsonObject);
     }
 }

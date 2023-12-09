@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../css/CheckButton.css';
+import "css/CheckButton.css";
 
 export default function CheckButton(props) {
 

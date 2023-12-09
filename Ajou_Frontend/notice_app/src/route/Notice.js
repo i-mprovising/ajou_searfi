@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import authLogin from "../const/AuthLogin";
-import swal from "../component/Swal";
-import userAPI from "../API/UserAPI";
-import noticeAPI from "../API/NoticeAPI";
-import InputText from "../component/InputText";
-import CheckButton from "../component/CheckButton";
-import imgSearch from "../image/search.png";
-import '../css/notice.css';
+import authLogin from "const/AuthLogin";
+import swal from "component/Swal";
+import userAPI from "API/UserAPI";
+import noticeAPI from "API/NoticeAPI";
+import InputText from "component/InputText";
+import CheckButton from "component/CheckButton";
+import imgSearch from "image/search.png";
+import "css/notice.css";
 
 export default function Notice() {
   let [HashtagList, setHashtagList] = useState(null);
@@ -35,30 +35,6 @@ console.log(noticeData);
         });
 
   }, []); // 비어있는 배열 인자 []가 있으면 useEffect를 1회만 실행함, 인자가 없거나 [v#1,...,v#N]과 같이 배열의 요소가 있으면 렌더링마다 실행함
-
-  function Hashtag() {
-    if (!HashtagList) return null;
-
-    return (
-      <>
-      {
-        Object.entries(HashtagList).map((data) => {
-          return (
-            <CheckButton name={data[0]} key={data[0]}
-              label={data[0]} onClick={onClickHashtag}
-            />
-          );
-        })
-      }
-      </>
-    );
-  }
-
-  function onClickHashtag(e, data) {
-    HashtagList[data.name] = data.checked ? 1 : 0;
-    setHashtagList({...HashtagList});
-//console.log(`onClickHashtag() name=${data.name} checked=${data.checked}`);
-  }
 
   function sortNoticeList(noticeData) {
     if (isDateAscendingOrder) { // 과거순
@@ -107,6 +83,12 @@ console.log("keyword="+keyword);
     // return false는 InputText.js의 onKeyDownInput()에서 Enter키 처리하지 않도록 함
   }
 
+  function onClickHashtag(e, data) {
+    HashtagList[data.name] = data.checked ? 1 : 0;
+    setHashtagList({...HashtagList});
+//console.log(`onClickHashtag() name=${data.name} checked=${data.checked}`);
+  }
+
   function onClickOrder() {
 //console.log("onClickOrder");
 
@@ -122,6 +104,24 @@ console.log("keyword="+keyword);
     setSelectItem(index);
 
     console.log(`index=${index} url=${url}`);
+  }
+
+  function Hashtag() {
+    if (!HashtagList) return null;
+
+    return (
+      <>
+      {
+        Object.entries(HashtagList).map((data) => {
+          return (
+            <CheckButton name={data[0]} key={data[0]}
+              label={data[0]} onClick={onClickHashtag}
+            />
+          );
+        })
+      }
+      </>
+    );
   }
 
   function NoticeItem(props) {

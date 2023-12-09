@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 //import logo from "./logo.svg";
 //import './css/App.css';
-import Home from "./route/Home";
-import Join from "./route/Join";
-import Login from "./route/Login";
-import MyPage from "./route/MyPage";
-import Notice from "./route/Notice";
+import Home from "route/Home";
+import Join from "route/Join";
+import Login from "route/Login";
+import MyPage from "route/MyPage";
+import Notice from "route/Notice";
 
 function App() {
   return (

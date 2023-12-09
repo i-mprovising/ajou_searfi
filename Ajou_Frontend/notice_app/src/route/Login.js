@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import gVar from "../const/GlobalVar";
-import authLogin from "../const/AuthLogin";
-import userAPI from "../API/UserAPI";
-import swal from "../component/Swal";
-import InputText from "../component/InputText";
+import gVar from "const/GlobalVar";
+import authLogin from "const/AuthLogin";
+import userAPI from "API/UserAPI";
+import swal from "component/Swal";
+import InputText from "component/InputText";
 
 export default function Login() {
   const navigate = useNavigate();

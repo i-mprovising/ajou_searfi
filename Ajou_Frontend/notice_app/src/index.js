@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
-import './css/style.css';
-import App from './App';
+import "css/index.css";
+import "css/style.css";
+import App from "App";
 import { BrowserRouter } from "react-router-dom";
-import BarHeader from "./barHeader";
-import reportWebVitals from './reportWebVitals';
+import BarHeader from "barHeader";
+import reportWebVitals from "reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

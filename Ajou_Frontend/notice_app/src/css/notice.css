@@ -107,7 +107,7 @@
 
 .noticeItem {
   display: flex;
-  align-items: flex-start;
+  align-items: default; /* flex-start, flex-end, baseline는 줄임말(...)인 text-overflow: ellipsis가 적용안됨 */
   flex-direction: column;
   justify-content: center;
   max-width: calc(100% - 1vh * 2); /* padding left + right 제외 */

@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import gVar from "../const/GlobalVar";
-import swal from "../component/Swal";
-import userAPI from "../API/UserAPI";
-import InputText from "../component/InputText";
-import CheckButton from "../component/CheckButton";
+import gVar from "const/GlobalVar";
+import swal from "component/Swal";
+import userAPI from "API/UserAPI";
+import InputText from "component/InputText";
+import CheckButton from "component/CheckButton";
 
 export default function MyPage() {
   let [HashtagList, setHashtagList] = useState(null);

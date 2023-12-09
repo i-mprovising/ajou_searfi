@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import "./css/barHeader.css";
+import "css/barHeader.css";
 
-import gVar from "./const/GlobalVar";
-import authLogin from "./const/AuthLogin";
-import imgLogo from "./image/logo.png";
-import imgProfile from "./image/profile.png";
+import gVar from "const/GlobalVar";
+import authLogin from "const/AuthLogin";
+import imgLogo from "image/logo.png";
+import imgProfile from "image/profile.png";
 
 function BarHeader() {
 

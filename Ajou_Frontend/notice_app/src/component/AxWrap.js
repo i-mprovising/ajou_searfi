@@ -1,7 +1,7 @@
 import axios from "axios";
-import Swal from "../component/Swal";
+import Swal from "component/Swal";
 
-import GVar from "../const/GlobalVar";
+import GVar from "const/GlobalVar";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 

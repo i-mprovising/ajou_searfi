@@ -37,6 +37,13 @@ public class NoticeController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
     }
 
+    @GetMapping("/monthly")
+    public ResponseEntity<?> Noticemonthly() {
+        JSONObject notice = new JSONObject();
+        notice = noticeService.getNoticeByMonth();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(notice);
+    }
+
     @PostMapping("/search")
     public ResponseEntity<?> noticeSearch(@RequestBody JSONObject jsonObject) {
 //        log.info("keyword = " + jsonObject.get("keyword"));

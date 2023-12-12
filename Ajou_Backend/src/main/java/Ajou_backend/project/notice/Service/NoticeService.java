@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +54,13 @@ public class NoticeService {
         return hashTag;
     }
 
+    public JSONObject getNoticeByMonth() {
+        JSONObject monthly = new JSONObject();
+        monthly = parseMonthList(pythonComponent.runPython("", 3));
+        log.info("After parsing = " + monthly);
+        return monthly;
+    }
+
 
     public List<Object> parseList(String jsonStr) {
 
@@ -74,6 +82,39 @@ public class NoticeService {
             e.printStackTrace();
         }
         return hashTag;
+    }
+
+    public JSONObject parseMonthList(String jsonStr) {
+
+        JSONObject monthly = new JSONObject();
+        if (jsonStr == "") {
+//            log.info("python 데이터가 없습니다~");
+            return monthly;
+        }
+        try { // java.io.exception 발생하는 코드 기입
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(jsonStr);
+            monthly = jsonObject;
+            for (int i = 1; i < 13; i++) {
+                String j = Integer.toString(i);
+                List<Object> notice = new ArrayList<>();
+                String noticelist = monthly.get(j).toString();
+                JSONArray jsonArray = (JSONArray) parser.parse(noticelist);
+                if (jsonArray.isEmpty()) {
+                    continue;
+                }
+                else {
+                    for (Object arr : jsonArray) {
+                        JSONObject json = (JSONObject) arr;
+                        notice.add(json);
+                    }
+                }
+                monthly.replace(j, notice);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return monthly;
     }
 
 }

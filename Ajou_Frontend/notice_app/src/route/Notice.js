@@ -54,7 +54,7 @@ console.log(noticeData);
 
     sortNoticeList(noticeData);
 
-    setNoticeList(noticeData);
+    setNoticeList([ ...noticeData ]);
   }
 
   function searchKeyword(keyword) {

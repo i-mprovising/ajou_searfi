@@ -1,4 +1,4 @@
-import AuthLogin from "../const/AuthLogin";
+import AuthLogin from "const/AuthLogin";
 
 const BaseAPI = {
 

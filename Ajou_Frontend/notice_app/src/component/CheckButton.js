@@ -45,8 +45,15 @@ export default function CheckButton(props) {
       e.preventDefault();
     }
 
+    var className;
+    if (checked) {
+      className = (props.checkedClass) ? props.checkedClass : "buttonChecked";
+    } else {
+      className = (props.uncheckedClass) ? props.uncheckedClass : "buttonUnchecked";
+    }
+
     return (
-      <button className={checked ? "buttonChecked" : "buttonCheck"} {...attrs}
+      <button className={className} {...attrs}
       	onClick={onClickButton}
         onKeyDown={onKeyDownButton}
        >

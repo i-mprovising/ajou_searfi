@@ -11,7 +11,7 @@ import NoticeMonthly from "route/NoticeMonthly";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Notice />} />
+      <Route path="/" element={<Home />} />
       <Route path="/join" element={<Join />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/login" element={<Login />} />

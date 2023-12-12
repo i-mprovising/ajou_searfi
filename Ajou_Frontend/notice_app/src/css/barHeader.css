@@ -46,25 +46,46 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   margin-left: auto;
   padding-right: 2vh;
 }
 
+.barNavLink {
+  color: #606060;
+  font-size: 1.7vh;
+  text-decoration: none;
+  padding: 0 0.6vh;
+}
+
+.barNavLink:hover {
+  font-size: 1.9vh;
+  padding: 0;
+}
+
+.barNavDot {
+  font-size: 0.8vh;
+  color: #606060;
+  padding: 0 0.3vh;
+}
+
 .barNavLogout {
   color: #606060;
-  font-size: 1.9vh;
+  font-size: 1.8vh;
   text-decoration: none;
-  margin-right: 1.5vh;
+  padding: 0 0.32vh;
+  margin-left: 0.3vh;
 }
 
 .barNavLogout:hover {
   font-size: 2vh;
+  padding: 0;
 }
 
 .barNavProfile {
   width: 3.9vh;
   height: 3.9vh;
+  margin-left: 1.5vh;
   cursor: pointer;
   transition: all 0.2s linear;
 }

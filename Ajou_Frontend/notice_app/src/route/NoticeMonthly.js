@@ -23,7 +23,6 @@ export default function NoticeMonthly() {
 
   function getMonthData(noticeData, month) {
     if (!month) month = currMonth;
-    if (month < 10) month = "0" + month;
     return noticeData[month];
   }
 
@@ -49,7 +48,6 @@ export default function NoticeMonthly() {
         else if (item.noticeid.includes("NATU")) item.noticeid = "수학과";
         else if (item.noticeid.includes("SOFT")) item.noticeid = "소프트웨어학과";
       }
-      
     }
     noticeData.isAscendingOrder = Array(12).fill(-1);
     sortNoticeList(noticeData);
@@ -57,7 +55,10 @@ export default function NoticeMonthly() {
   }
 
   function onClickMonth(e, data) {
+    var oldMonth = currMonth;
     currMonth = parseInt(data.name.split('_')[1]);
+    if (oldMonth === currMonth) return;
+    setSelectItem(-1); // 월이 변경되면 선택 목록이 없는 것으로 처리
     sortNoticeList(noticeList);
     setcurrMonth(currMonth);
     setNoticeList({ ...noticeList });
@@ -90,7 +91,8 @@ export default function NoticeMonthly() {
           index++;
           return (
             <CheckButton name={"month_"+index} key={index} checked={index===currMonth}
-              label={index} onClick={onClickMonth}
+              uncheckedClass="monthButtonUnchecked" checkedClass="monthButtonChecked"
+              label={index+"월"} onClick={onClickMonth}
             />
           );
         })
@@ -121,13 +123,10 @@ export default function NoticeMonthly() {
   return (
     <div className="noticeFrame">
       <div className="noticePartition">
-        <div style={{width:"95%", height:"5vh", overflow:"hidden"}}>
-
-          <div className="noticeHashtag">
-            <MonthButton/>
-          </div>
+        <div className="monthFrame" style={{width:"100%", height:"7vh"}}>
+          <MonthButton/>
         </div>
-        <div className="noticeBoard" style={{width:"100%", height:"calc(100% - 5vh)"}}>
+        <div className="noticeBoard" style={{width:"100%", height:"calc(100% - 7vh)"}}>
           <div className="noticeOrderFrame">
             <span className="noticeOrder" onClick={onClickOrder}>
               {isDateAscendingOrder ? "과거순" : "최신순"}

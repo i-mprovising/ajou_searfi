@@ -76,15 +76,17 @@
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
-  width: calc(100% - 4vh); /* padding-right 제외 */
+  width: calc(100% - 4vh * 2); /* padding left + right 제외 */
   height: 5vh;
-  padding-right: 4vh;
+  padding: 0 4vh;
   overflow: hidden;
 }
 
 .noticeOrder {
   font-size: 1.4vh;
+  background-color: #fafafa;
   padding: 0.2vh 1vh;
+  margin-top: 0.3vh;
   border: solid 0.1vh #cacaca;
   border-radius: 3vh;
   box-shadow: var(--box-shadow-small);
@@ -114,6 +116,7 @@
   height: 8vh;
   padding: 1vh;
   margin-bottom: 2vh;
+  background-color: #fbfdff;
   border: solid 0.2vh #a0a0a0;
   border-radius: 1.5vh;
   box-shadow: var(--box-shadow);
@@ -123,7 +126,7 @@
 }
 
 .noticeItemSelect {
-  background-color: #e0ebf3;
+  background-color: #d7e8fc;
 }
 
 .noticeItem:hover {
@@ -172,37 +175,49 @@
   padding:0;
 }
 
-.button {
-  height: 4.5vh;
-  margin: 4vh;
-  padding: 0 3.3vh;
-  font-size: 2vh;
-  color: white;
-  background-color: #066aba;
-/*  outline-color: var(--outline-color); */
-  outline-color: #00d4f4;
-  border-width: 0;
-  border-radius: 3vh;
-  box-shadow: var(--box-shadow);
+.monthFrame {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.monthButtonUnchecked {
+  min-width: 3vw;
+  min-height: 1.5vw;
+  padding: 0.1vw 0;
+  margin: 0.3vw;
+  font-size: 1.4vh;
+  color: black;
+  background-color: #fafafa;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vw;
+  box-shadow: var(--box-shadow-small);
   cursor: pointer;
   transition: all 0.2s linear;
+  outline-color: var(--outline-color);
 }
 
-.button:disabled {
-  color: #c4c4c4;
-  background-color: #eaeaea;
-  cursor: not-allowed;
+.monthButtonChecked {
+  min-width: 3.8vw;
+  min-height: 2vw;
+  font-weight: 600;
+  margin: 0.3vw;
+  padding: 0.35vw 0;
+  font-size: 1.6vh;
+  color: black;
+  background-color: #d7e8fc;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vw;
+  box-shadow: var(--box-shadow-small);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  outline-color: var(--outline-color);
 }
 
-.button:hover {
-  transform: scale(1.1);
-}
-
-.textLink {
-  color: #606060;
-  font-size: 1.4vh;
-}
-
-.textLink:hover {
-  font-size: 1.5vh;
+.monthButtonUnchecked:hover, .monthButtonChecked:hover {
+  color: white;
+  background-color: #60ace4;
+  transform: scale(1.2);
 }

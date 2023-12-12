@@ -15,7 +15,7 @@
 .appContainer {
   height: calc(100vh - 5.4vh - 3vh); /* barNav height 5.4vh + padding-top 제외 */
   min-height: 300px;
-  min-width: 200px;
+  min-width: 500px;
   padding-top: 3vh;
   display: flex;
   align-items: center; /* flex-direction 반대 방향(교차축) 정렬, row인 경우 상하 방향 */

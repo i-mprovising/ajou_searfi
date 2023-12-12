@@ -1,5 +1,5 @@
-import baseAPI from "./BaseAPI";
-import axwrap from "../component/AxWrap";
+import baseAPI from "API/BaseAPI";
+import axwrap from "component/AxWrap";
 
 const UserAPI = {
 

@@ -6,6 +6,7 @@ import Join from "route/Join";
 import Login from "route/Login";
 import MyPage from "route/MyPage";
 import Notice from "route/Notice";
+import NoticeMonthly from "route/NoticeMonthly";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/notice" element={<Notice />} />
+      <Route path="/notice/monthly" element={<NoticeMonthly />} />
     </Routes>
   );
 }

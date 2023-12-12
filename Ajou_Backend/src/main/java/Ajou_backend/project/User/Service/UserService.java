@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +39,6 @@ public class UserService {
     private final LinkRepository linkRepository;
     private final HashtagRepository hashtagRepository;
     private final JwtProvider jwtProvider;
-    private final SaveJSON saveJSON;
 
     public void saveHash(User user, List<Hashtag> hashtagList) {
         for (Hashtag hash : hashtagList) {
@@ -54,10 +56,11 @@ public class UserService {
             String jsonStr = mapper.writeValueAsString(object.get("user"));
             JSONObject jsonUser = (JSONObject) jsonParser.parse(jsonStr);
             UserDto userDto = new UserDto();
-            userDto.setGrade(Long.valueOf((String) jsonUser.get("grade")));
+            userDto.setGrade(Long.valueOf(jsonUser.get("grade").toString()));
             userDto.setEmail((String) jsonUser.get("email"));
             userDto.setMajor((String) jsonUser.get("major"));
             userDto.setPassword((String) jsonUser.get("password"));
+            log.info("getjsonUser Success = " + userDto);
             return userDto ;
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,12 +86,11 @@ public class UserService {
         if (user != null) {
             throw new CustomException(ERR_DUPLICATE_ID);
         }
-        log.info("user = "+ user);
         user = new User(userDto);
         userRepository.save(user);
         List<Hashtag> hashtagList = getHashtagList(object);
         saveHash(user, hashtagList);
-        saveJSON.saveForSendMail();
+        saveForSendMail();
         return user.getUserId();
     }
 
@@ -181,7 +183,33 @@ public class UserService {
         List<Hashtag> hashtagList = getHashtagList(object);
         linkRepository.deleteByUser_UserId(user.getUserId());
         saveHash(user, hashtagList);
-        saveJSON.saveForSendMail();
+        saveForSendMail();
+    }
+    public void saveForSendMail() {
+
+        List<User> userList = userRepository.findAll();
+        List<JSONObject> jsonList = new JSONArray();
+
+        for (User user : userList) {
+            JSONObject jsonUser = getUserInfo(user.getUserId());
+            JSONObject jsonKeyword = new JSONObject();
+            jsonKeyword.put("email", user.getEmail());
+            jsonKeyword.put("keyword", jsonUser.get("keyword"));
+//            log.info("jsonUser.get(\"user\") = " + user.getEmail());
+//            log.info("jsonUser.get(\"keyword\") = " + jsonUser.get("keyword"));
+            jsonList.add(jsonKeyword);
+        }
+
+        try {
+            FileWriter file = new FileWriter("./userInfo.json");
+            file.write(jsonList.toString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.print(jsonList);
+
     }
 }
 

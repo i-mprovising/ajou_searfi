@@ -1,16 +1,14 @@
 import sys,os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-import yaml
-import re
-import csv
+import yaml, re, time, logging
 
 from datetime import date
 from dotenv import load_dotenv
-from openai import OpenAI
 
 from scrap import *
 from es_handler import ElasticsearchHandler
 from utils import get_embedding
+from send_mail import mailing
 
 def get_data(page=None):
     # get config
@@ -21,24 +19,20 @@ def get_data(page=None):
     # get scrapped data from url
     if page is not None: # get data on specified page for test
         scrap = getattr(eval(page), 'scrap')
-        data_list = scrap(cfg[page], cfg[page]['date'])
+        data_list = scrap(cfg[page], cfg['date'])
     else:
         data_list = []
         for page, v in cfg.items():
             if page != 'date':
                 scrap = getattr(eval(page), 'scrap')
                 data_list += scrap(cfg[page], cfg['date'])
-                print(len(data_list))
+                logging.info(f'scraping {page} done. new data : {len(data_list)}')
 
         # update date in config(last date of data updated)
-        cfg[page]['date'] = str(date.today())
+        cfg['date'] = str(date.today())
         with open(fname, 'w') as f:
             f.write(yaml.dump(cfg, default_flow_style=False))
-
-    save_list = [v.values() for v in data_list]
-    f = open("./model/test/data/new_data.tsv", "w")
-    csv.writer(f, delimiter='\t')
-    f.close()
+        logging.info('update config.yaml')
     
     return data_list
 
@@ -47,18 +41,30 @@ def preprocess(text):
     text = re.sub('\[]', '', text)
     return text
 
-def repeated_notices(ES:ElasticsearchHandler, data_list):
+def update_repeated_notices(ES:ElasticsearchHandler, data_list):
     threshold = 20
     # repeated_data index에서 검색하여 score가 일정 이상이면 index update
-    INDEX = "repeated_data"
-    # ES.create_index(INDEX) # create index if not exists
+    INDEX = "repeated_datas"
 
     for data in data_list:
-        result = ES.search_dense(data['title'], data['title_vector'], INDEX, topk=2)
+        id = data['_id']
+        data = data['_source']
+        result = ES.search_dense(query=data['title'], 
+                                 query_vector=data['title_vector'], 
+                                 index=INDEX, 
+                                 topk=2)
         if len(result['hits']['hits']) == 0: continue
-        first_data = result['hits']['hits'][0]
-        if first_data['_score'] > threshold:
-            ES.update_id(index=INDEX, id=first_data['_id'], data=data['_source']) # 해당 id 데이터 update
+        res = result['hits']['hits'][0]
+        if res['_score'] > threshold:
+            logging.info(f"repeated data updated : {res['_source']['title']}")
+            ES.delete_id(index="repeated_datas", 
+                         id=res['_id'])
+
+            ES.insert(index='repeated_data',
+                      id=id,
+                      data=data)
+            
+            time.sleep(1)
 
 def main():
     load_dotenv('.env', verbose=True)
@@ -69,7 +75,15 @@ def main():
 
     data_list = get_data()
     insert_list = [] # for bulk insert
-    source_list = []
+    mail_list = []
+
+    page_code = {
+        "아주대학교 공지사항":"NOTI",
+        "자연과학대학":"NATU",
+        "수학과":"MATH",
+        "소프트웨어학과":"SOFT",
+        "소프트웨어융합대학":"SWUN"
+    }
 
     matches = ['재공지', 'Remind', 'remind', 'REMIND']
     for data in data_list:
@@ -80,38 +94,32 @@ def main():
         data['date'] = f"{data['date']}T{data['time']}Z"
         data.pop('time', None)
         data['view'] = data['view'].replace(',', '')
-        # insert_list.append({
-        #     "_index": notice_index,
-        #     "_id": f"{data['page']}_{data['num']}",
-        #     "_source" : data
-        # })
+        insert_list.append({
+            # "_index": notice_index,
+            "_id": f"{page_code[data['page']]}_{data['num']}",
+            "_source" : data
+        })
         assert len(data.keys()) == 9, "numbers of data key not matched"
         try:
             ES.insert(index=notice_index,
                       id=f"{data['page']}_{data['num']}",
                       data=data)
+            mail_list.append([f"{data['page']}_{data['num']}", data['title']]) # id, title
         except Exception as e:
-            print(e)
-            print(data['page'], data['num'], data['title'])
+            logging.warning(f"exception occured while inserting {page_code[data['page']]}_{data['num']} {data['title']}")
 
-        source_list.append(data)
+    logging.info('update elasticsearch done.')
 
-    repeated_notices(ES, source_list)
-    # print("insert bulk")
-    # ES.insert_bulk(insert_list)
-
+    update_repeated_notices(ES, insert_list)
+    mailing(ES, mail_list) # 새로 들어오는 데이터 id list
+    logging.info('mail send done.')
 
 if __name__=='__main__':
-    # print(get_data('mathematics'))
-    # print(get_data('notice'))
-    # print(get_data('naturaluniv'))
-    # print(get_data('software'))
-    # load_dotenv('.env', verbose=True)
+    load_dotenv('.env')
 
-    # data_list = get_data('swuniv')
-    # for data in data_list:
-    #     title = data['title']
-    #     embedding = get_embedding(title)
-    #     breakpoint()
+    logging.basicConfig(filename=os.getenv('PY_LOG'), 
+                        level=logging.WARNING,
+                        format='%(asctime)s\t%(levelname)s\t%(message)s',
+                        datefmt='%m/%d/%Y %H:%M:%S')
 
     main()

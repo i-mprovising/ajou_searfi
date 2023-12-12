@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from elasticsearch import Elasticsearch, helpers
 
 class ElasticsearchHandler():
@@ -121,19 +122,31 @@ class ElasticsearchHandler():
         },
             "script" : data
         }
-
         self.es.update_by_query(index=index, body=body)
 
-    def process_data(self, results, score=False):
+    def delete_id(self, index, id):
+        body = {
+            "query" : {
+                "bool" : {
+                "filter" : {
+                    "terms" : {
+                        "_id" : [id]
+                    }
+                }
+            }
+        }}
+        self.es.delete_by_query(index=index, body=body)
 
+    def process_data(self, results, score=False):
         data = []
         for hit in results['hits']['hits']:
             d = {
                 "noticeid":hit['_id'],
                 "title":hit['_source']['title'],
                 "date":hit['_source']['date'][:10],
-                "url":hit['_source']['url']}
-            if score:
+                "url":hit['_source']['url']
+                }
+            if score==True:
                 d['score'] = hit['_score']
             data.append(d)
         return data
@@ -151,9 +164,15 @@ class ElasticsearchHandler():
         }
         return self.es.search(index=index, body=body)
     
-    def search_sparse(self, query, index, topk=20):
+    def search_sparse(self, query, index, topk=20, explain=False):
         body = {
-                "explain":True,
+                "explain":explain,
+                "sort":{
+                    "date":{
+                        "order":"desc"
+                    }
+                },
+                "track_scores":True,
                 "query": {
                     "match": {
                         "title" : query
@@ -163,8 +182,9 @@ class ElasticsearchHandler():
                 }
         res = self.es.search(index=index, body=body)
         return res
-
-    def search_dense(self, query, query_vector, index, topk=20):
+    
+    def search_dense(self, query, query_vector, index, topk=30, explain=False):
+         
         body = {
                 "explain":True,
                 "query": {
@@ -188,4 +208,51 @@ class ElasticsearchHandler():
                 }
         res = self.es.search(index=index, body=body)
         return res
+    
+
+    def search_dense_date(self, query, query_vector, index, topk=30, explain=False):
+        due_date = datetime.now().date() + timedelta(weeks=-24)
+        body = {
+                "explain":explain,
+                "track_scores":True,
+                "query": {
+                    "script_score": {
+                        "query": {
+                            "bool":{
+                                "must":{
+                                    "match":{
+                                        "title":query
+                                    }
+                                },
+                                "filter":{
+                                    "range":{
+                                        "date":{
+                                            "gte": due_date
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "script": {
+                            "source": "params.sparse_weight * _score + params.dense_weight * cosineSimilarity(params.query_vector, 'title_vector') + 1.0",
+                            # "source": "cosineSimilarity(params.query_vector, 'title_vector')",
+                            "params": {"query_vector": query_vector,
+                                       "sparse_weight": 1,
+                                       "dense_weight": 5.83}
+                        }
+                    }
+                },
+                "size" : topk
+                }
+        res = self.es.search(index=index, body=body)
+        return res
+    
+    def analyze(self, index, query):
+        body={
+            "analyzer": "lower_analyzer",
+            "text": query
+        }
+        res = self.es.indices.analyze(index=index, body=body)
+        return res
+        
     

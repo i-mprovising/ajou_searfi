@@ -36,6 +36,7 @@ public class UserService {
     private final LinkRepository linkRepository;
     private final HashtagRepository hashtagRepository;
     private final JwtProvider jwtProvider;
+    private final SaveJSON saveJSON;
 
     public void saveHash(User user, List<Hashtag> hashtagList) {
         for (Hashtag hash : hashtagList) {
@@ -87,6 +88,7 @@ public class UserService {
         userRepository.save(user);
         List<Hashtag> hashtagList = getHashtagList(object);
         saveHash(user, hashtagList);
+        saveJSON.saveForSendMail();
         return user.getUserId();
     }
 
@@ -179,6 +181,7 @@ public class UserService {
         List<Hashtag> hashtagList = getHashtagList(object);
         linkRepository.deleteByUser_UserId(user.getUserId());
         saveHash(user, hashtagList);
+        saveJSON.saveForSendMail();
     }
 }
 

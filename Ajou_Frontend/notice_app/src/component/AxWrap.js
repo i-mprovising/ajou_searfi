@@ -118,7 +118,7 @@ console.log("AxWrap.delete() " + AxWrap.logErrorMessage(error));
   responseErr: (error) => {
     if (error.response) return true;
     if (error.request) {
-      Swal.alertErr("네트워크 오류가 발생했습니다.");
+      Swal.alertErr("서버 접속 오류가 발생했습니다.");
     } else {
       Swal.alertErr("알 수 없는 오류가 발생했습니다.");
     }

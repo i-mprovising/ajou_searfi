@@ -54,11 +54,13 @@ def notice_list(ES, INDEX, keywords:list):
 
 def get_repeated(ES, INDEX):
     data_list = ES.process_data(ES.select_all(index=INDEX))
-    per_month = defaultdict(list)
+    per_month = {}
+    for i in range(1, 13, 1):
+        per_month[str(i)] = []
     for data in data_list:
         month = data['date'][5:7]
+        month = str(int(month))
         per_month[month].append(data)
-
     return per_month
 
 if __name__=="__main__":

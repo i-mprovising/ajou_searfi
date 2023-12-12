@@ -17,14 +17,14 @@ public class PythonComponent{
         log.info(str);
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (idx == 1) { //키워드 기반
-            processBuilder = new ProcessBuilder("python3", "src/main/java/Ajou_backend/project/Python/Code/search.py","-f", "notice_list","-i", str);
+            processBuilder = new ProcessBuilder("arch", "-arm64", "python3", "src/main/java/Ajou_backend/project/Python/Code/search.py","-f", "notice_list","-i", str);
         }
         else if (idx == 2) { //검색어
-            processBuilder = new ProcessBuilder("python3", "src/main/java/Ajou_backend/project/Python/Code/search.py", "-f", "search_result","-i", str);
+            processBuilder = new ProcessBuilder("arch", "-arm64", "python3", "src/main/java/Ajou_backend/project/Python/Code/search.py", "-f", "search_result","-i", str);
         }
 
-        else { // 월 별 공지사항
-            processBuilder = new ProcessBuilder("python3", "src/main/java/Ajou_backend/project/Python/Code/search.py","-f", "get_repeated");
+        else if (idx == 3) { // 월 별 공지사항
+            processBuilder = new ProcessBuilder("arch", "-arm64", "python3", "src/main/java/Ajou_backend/project/Python/Code/search.py","-f", "get_repeated");
         }
 
         try { // java.io.exception 발생하는 코드 기입

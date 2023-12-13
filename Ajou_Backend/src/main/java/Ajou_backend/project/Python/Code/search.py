@@ -83,7 +83,7 @@ if __name__=="__main__":
     parser.add_argument('--input', '-i', type=str, help="input of the function")
     args = parser.parse_args()
 
-    ENV_PATH = "src/main/java/Ajou_backend/project/Python/Code/.env"
+    ENV_PATH = "../../.env"
     load_dotenv(ENV_PATH)
     assert os.getenv("ES_URI") is not None, "Elasticsearch uri is None. Please check .env path"
     ES = ElasticsearchHandler(os.getenv("ES_URI"))

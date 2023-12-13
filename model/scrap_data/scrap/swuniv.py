@@ -41,7 +41,7 @@ def get_data(results, page):
     if len(res) != 6: continue
     try :
       data = {}
-      data['page'] = 'SWUN'
+      data['page'] = '소프트웨어융합대학'
       data['cateory'] = res[1].text.strip()
       link = res[2].select_one('div>a')['href']
       data['url'] = page+link

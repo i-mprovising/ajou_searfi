@@ -37,7 +37,7 @@ def get_data(soup, page):
       data = {}
       res = results[i].select('td')
       if len(res) != 10: continue
-      data['page'] = "SOFT"
+      data['page'] = "소프트웨어학과"
       data['category'] = 'sw'
       data['dept'] = 'sw'
       data['num'] = res[0].text.strip()

@@ -39,7 +39,7 @@ def get_data(soup, page):
       res = result.select('td')
       if len(res)!=7: continue
 
-      data['page'] = 'MATH'
+      data['page'] = '수학과'
       data['num'] = res[0].text
       link = res[1].select_one('a')['href'] # 페이지 링크
       data['url'] = page+link

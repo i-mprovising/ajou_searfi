@@ -42,7 +42,7 @@ def get_data(results, page):
     try :
       data = {}
       res = result.select('td')
-      data['page'] = "NATU"
+      data['page'] = "자연과학대학"
       data['category'] = res[1].text.strip()
       link = res[2].select_one('div>a')['href']
       data['url'] = page+link

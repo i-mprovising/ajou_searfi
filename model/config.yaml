@@ -1,4 +1,4 @@
-date: '2023-09-10'
+date: '2023-12-12'
 mathematics:
   qstr: ?mode=list&board_no=310&pager.offset=
   scrap: 0
@@ -16,7 +16,6 @@ software:
   scrap: 1
   url: http://software.ajou.ac.kr
 swuniv:
-  date: '2023-12-03'
   qstr: ?mode=list&&articleLimit=10&article.offset=
   scrap: 0
   url: https://www.ajou.ac.kr/sw/board/notice.do

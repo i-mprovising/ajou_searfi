@@ -11,7 +11,7 @@ from es_handler import ElasticsearchHandler
 def send_msg(recv, id, keywords, notices):
     message = EmailMessage()
     fish_url = "url"
-    fish = '𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡'
+    fish = '𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡𓆝𓆟𓆜𓆞𓆡 '
     content = f'검색물고기에서 {id}님의 관심 키워드 {keywords}와 관련 있는 아주대학교 공지사항을 확인해 보세요\n\n{fish_url}\n\n{fish}\n\n\t\t오늘 올라온 공지사항이에요 . . .\n\n'
     for i in notices:
         content += f"\t𓆟 {i}\n\n"

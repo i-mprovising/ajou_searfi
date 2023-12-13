@@ -160,4 +160,5 @@ cython_debug/
 /Ajou_Backend/src/main/resources/application.properties
 /Ajou_Backend/src/main/java/Ajou_backend/project/Python/Code/.env
 .vscode/
+/Ajou_Backend/bin
 

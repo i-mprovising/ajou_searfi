@@ -16,13 +16,13 @@ def search_result(ES:ElasticsearchHandler, INDEX:str, keyword:str):
 def notice_list(ES:ElasticsearchHandler, INDEX:str, keywords:list, topk=20):
     # noticeid, title, date, url
     if len(keywords) == 0:
-        a_month_before = datetime.now().date() + timedelta(days=-30)
+        a_month_before = datetime.now().date() + timedelta(days=-20)
         # 키워드가 없을 때 한달 이내 공지사항 목록을 가져온다
         range_query = {
             "sort": {
                 "date": "desc"
             },
-            "size":30,
+            "size": 30,
             "query": {
                 "range": {
                     "date": {

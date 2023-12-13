@@ -1,0 +1,95 @@
+.barNav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: calc(5.4vh - 0.6vh); /* boder-bottom 0.6vh 제외, border 포함하여 5.4vh가 됨 */
+  margin: 0;
+  font-size: 1.9vh;
+  text-shadow: 0.07vh 0.07vh 0.21vh #a0a0a0;
+  color: black;
+  background: white;
+  border-bottom: solid 0.6vh #066aba;
+  box-shadow: var(--box-shadow);
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.barNavLeft {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 2vh;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.barNavLeft:hover {
+  transform: scale(1.1);
+}
+
+.barNavTitle {
+  font-weight: 400;
+  margin: 1.5vh;
+}
+
+.barNavLogo {
+  width: 3.9vh;
+  height: 3.9vh;
+}
+
+.barNavRight {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: auto;
+  padding-right: 2vh;
+}
+
+.barNavLink {
+  color: #606060;
+  font-size: 1.7vh;
+  text-decoration: none;
+  padding: 0 0.6vh;
+}
+
+.barNavLink:hover {
+  font-size: 1.9vh;
+  padding: 0;
+}
+
+.barNavDot {
+  font-size: 0.8vh;
+  color: #606060;
+  padding: 0 0.3vh;
+}
+
+.barNavLogout {
+  color: #606060;
+  font-size: 1.8vh;
+  text-decoration: none;
+  padding: 0 0.32vh;
+  margin-left: 0.3vh;
+}
+
+.barNavLogout:hover {
+  font-size: 2vh;
+  padding: 0;
+}
+
+.barNavProfile {
+  width: 3.9vh;
+  height: 3.9vh;
+  margin-left: 1.5vh;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.barNavProfile:hover {
+  transform: scale(1.1);
+}

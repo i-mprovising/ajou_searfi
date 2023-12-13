@@ -1,0 +1,223 @@
+
+.noticeFrame {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  width: calc(100% - 1.5vh * 2);
+  height: 100%;
+  padding: 0 1.5vh;
+  font-size: 1.4vh;
+  color: black;
+
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.noticePartition {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+  width: calc(50% - 4vh);
+  height: calc(100% - 4vh);
+  margin-bottom: 4vh;
+}
+
+.noticeBoard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: solid 0.2vh #a0a0a0;
+  border-radius: 1.5vh;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.noticeSearchBox {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: calc(98% - 1vh * 2); /* padding left + right 제외 */
+  height: calc(50% - 1vh * 2); /* padding top + bottom 제외 */
+  padding: 1vh;
+  border: solid 0.2vh #7a7070 !important;
+  border-radius: 3.2vh;
+  overflow: hidden;
+}
+
+.noticeSearchImage {
+  width: 3.9vh;
+  height: 3.9vh;
+}
+
+.noticeSearchInput {
+  background: transparent !important;
+  width: 95% !important;
+  height: calc(100% - 1vh* 2) !important;
+  outline-width: 0 !important;
+  border-width: 0 !important;
+  padding-left: 0.5vh !important;
+  font-size: 2vh !important;
+}
+
+.noticeHashtag {
+  padding-top: 1vh;
+}
+
+.noticeOrderFrame {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: calc(100% - 4vh * 2); /* padding left + right 제외 */
+  height: 5vh;
+  padding: 0 4vh;
+  overflow: hidden;
+}
+
+.noticeOrder {
+  font-size: 1.4vh;
+  background-color: #fafafa;
+  padding: 0.2vh 1vh;
+  margin-top: 0.3vh;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vh;
+  box-shadow: var(--box-shadow-small);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.noticeOrder:hover {
+  color: white;
+  background-color: #60ace4;
+  transform: scale(1.1);
+}
+
+.noticeItemFrame {
+  width: calc(100%  - 3vh * 2); /* padding left + right 제외 */
+  height: calc(100% - 5vh - 1vh - 2vh); /* noticeOrder height와 padding top + bottom 제외 */
+  padding: 1vh 3vh 2vh 3vh;
+  overflow: auto;
+}
+
+.noticeItem {
+  display: flex;
+  align-items: default; /* flex-start, flex-end, baseline는 줄임말(...)인 text-overflow: ellipsis가 적용안됨 */
+  flex-direction: column;
+  justify-content: center;
+  max-width: calc(100% - 1vh * 2); /* padding left + right 제외 */
+  height: 8vh;
+  padding: 1vh;
+  margin-bottom: 2vh;
+  background-color: #fbfdff;
+  border: solid 0.2vh #a0a0a0;
+  border-radius: 1.5vh;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.noticeItemSelect {
+  background-color: #d7e8fc;
+}
+
+.noticeItem:hover {
+  background-color: #60ace4;
+  transform: scale(1.03);
+}
+
+.noticeItem:hover > .noticeDate {
+  color: #f0f0f0;
+}
+
+.noticeItem:hover > .noticeSubject {
+  color: white;
+}
+
+.noticeDate {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: calc(100% - 1vh);
+  padding-right: 1vh;
+  font-size: 1.6vh;
+  color: #505050;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.noticeSubject {
+  font-size: 2vh;
+  font-weight: 600;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.noticeIframe {
+  width: 100%;
+  height: 100%;
+  float: none;
+  overflow: auto;
+  border:0;
+  margin:0;
+  padding:0;
+}
+
+.monthFrame {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.monthButtonUnchecked {
+  min-width: 3vw;
+  min-height: 1.5vw;
+  padding: 0.1vw 0;
+  margin: 0.3vw;
+  font-size: 1.4vh;
+  color: black;
+  background-color: #fafafa;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vw;
+  box-shadow: var(--box-shadow-small);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  outline-color: var(--outline-color);
+}
+
+.monthButtonChecked {
+  min-width: 3.8vw;
+  min-height: 2vw;
+  font-weight: 600;
+  margin: 0.3vw;
+  padding: 0.35vw 0;
+  font-size: 1.6vh;
+  color: black;
+  background-color: #d7e8fc;
+  border: solid 0.1vh #cacaca;
+  border-radius: 3vw;
+  box-shadow: var(--box-shadow-small);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  outline-color: var(--outline-color);
+}
+
+.monthButtonUnchecked:hover, .monthButtonChecked:hover {
+  color: white;
+  background-color: #60ace4;
+  transform: scale(1.2);
+}

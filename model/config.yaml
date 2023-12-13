@@ -1,0 +1,22 @@
+date: '2023-09-10'
+mathematics:
+  qstr: ?mode=list&board_no=310&pager.offset=
+  scrap: 0
+  url: http://math.ajou.ac.kr/math/board/board01.jsp
+naturaluniv:
+  qstr: ?mode=list&&articleLimit=10&article.offset=
+  scrap: 0
+  url: https://ns.ajou.ac.kr/ns/board/notice.do
+notice:
+  qstr: ?mode=list&&articleLimit=10&article.offset=
+  scrap: 0
+  url: https://www.ajou.ac.kr/kr/ajou/notice.do
+software:
+  qstr: /bbs/board.php?tbl=notice&&category=&findType=&findWord=&sort1=&sort2=&it_id=&shop_flag=&mobile_flag=&page=
+  scrap: 1
+  url: http://software.ajou.ac.kr
+swuniv:
+  date: '2023-12-03'
+  qstr: ?mode=list&&articleLimit=10&article.offset=
+  scrap: 0
+  url: https://www.ajou.ac.kr/sw/board/notice.do
